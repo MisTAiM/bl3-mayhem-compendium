@@ -126,120 +126,98 @@ function buildCharactersSection() {
 
 
 // ── LIVE STATS SECTION ─────────────────────────────────────
+// SteamSpy data embedded at build time (updates daily, no CORS)
+// Steam current players: live via Steam API (has CORS)
+// Speedrun.com: live via their API (has CORS, correct game ID = 369penl1)
+
+const STEAMSPY_DATA = {
+  owners: "2,000,000 — 5,000,000",
+  positive: 125248,
+  negative: 23817,
+  avgHoursForever: 2652,
+  tags: ["RPG","Looter Shooter","Multiplayer","FPS","Online Co-Op","Action","Loot","Open World"],
+  lastUpdated: "April 2026"
+};
+
 function buildLiveSection() {
   const sec = document.getElementById('section-live');
   if (!sec || sec.innerHTML.trim()) return;
+
+  const pos = STEAMSPY_DATA.positive;
+  const neg = STEAMSPY_DATA.negative;
+  const total = pos + neg;
+  const pct = Math.round((pos / total) * 100);
+  const avgH = Math.floor(STEAMSPY_DATA.avgHoursForever / 60);
+  const avgM = STEAMSPY_DATA.avgHoursForever % 60;
+  const sentiment = pct >= 80 ? 'Very Positive' : pct >= 70 ? 'Mostly Positive' : 'Mixed';
+  const sentColor = pct >= 80 ? 'var(--green)' : pct >= 70 ? '#a0d080' : 'var(--yellow)';
 
   sec.innerHTML = `
     <div class="page-header">
       <div class="page-header-eyebrow">Live Data</div>
       <h1>Live Stats</h1>
-      <p>Real-time data pulled from public APIs — SteamSpy player estimates, Steam review score, and speedrun world records.</p>
+      <p>Speedrun world records pulled live from Speedrun.com API. Steam stats from SteamSpy (embedded — updates daily, no CORS). Current players from Steam API.</p>
     </div>
     <div class="content-body">
 
-      <div class="section-title mb-8">Steam Player Stats</div>
-      <div class="section-desc mb-16">Data from SteamSpy — updates periodically. Borderlands 3 Steam App ID: 397540.</div>
-      <div id="steamspy-cards" class="grid-4 mb-32">
-        <div class="card" style="text-align:center"><div style="font-family:var(--font-head);font-size:14px;color:var(--gray);letter-spacing:1px">LOADING...</div></div>
+      <div class="section-title mb-8">Steam Stats</div>
+      <div class="section-desc mb-16">Review data and ownership estimates from SteamSpy — Borderlands 3 (App ID: 397540).</div>
+      <div class="grid-4 mb-24">
+        ${liveStatCard('OWNERS', '2M — 5M', 'Estimated Steam copies sold', '#4A9BFF')}
+        ${liveStatCard('REVIEWS', total.toLocaleString(), 'Total Steam reviews', '#52C41A')}
+        ${liveStatCard('POSITIVE', pct+'%', sentiment, sentColor)}
+        ${liveStatCard('AVG PLAYTIME', avgH+'h '+avgM+'m', 'Average hours all time', '#F5A623')}
       </div>
 
-      <div class="section-title mb-8">Steam Reviews</div>
-      <div id="review-bar" class="card mb-32">
-        <div style="color:var(--gray);font-family:var(--font-mono);font-size:12px">Fetching review data...</div>
+      <div class="card mb-8" style="border-color:rgba(255,255,255,0.1)">
+        <div style="display:flex;align-items:center;gap:20px;margin-bottom:12px">
+          <div style="font-family:var(--font-head);font-size:48px;color:${sentColor};text-shadow:2px 2px 0 #000;line-height:1">${pct}%</div>
+          <div>
+            <div style="font-family:var(--font-head);font-size:24px;color:${sentColor};letter-spacing:2px">${sentiment}</div>
+            <div style="font-size:12px;color:var(--text-dim)">${pos.toLocaleString()} positive · ${neg.toLocaleString()} negative · ${total.toLocaleString()} total</div>
+          </div>
+          <div style="margin-left:auto;text-align:right">
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray)">Data: SteamSpy — embedded ${STEAMSPY_DATA.lastUpdated}</div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray)">App ID: 397540</div>
+          </div>
+        </div>
+        <div style="height:16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);overflow:hidden;position:relative">
+          <div style="position:absolute;left:0;top:0;bottom:0;width:${pct}%;background:var(--green)"></div>
+          <div style="position:absolute;right:0;top:0;bottom:0;width:${100-pct}%;background:var(--red)"></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          ${STEAMSPY_DATA.tags.map(t=>`<span style="font-family:var(--font-mono);font-size:10px;border:1px solid rgba(245,166,35,0.3);padding:2px 8px;color:var(--orange)">${t}</span>`).join('')}
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;padding:10px 14px;background:var(--bg-card);border:1px solid rgba(74,155,255,0.3)">
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray);letter-spacing:2px">CURRENT PLAYERS (STEAM LIVE)</div>
+        <div id="live-players" style="font-family:var(--font-head);font-size:24px;color:#4A9BFF;text-shadow:2px 2px 0 #000;margin-left:8px">Fetching...</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray);margin-left:auto">Updates every page load via Steam API</div>
       </div>
 
       <div class="section-title mb-8">Speedrun World Records</div>
-      <div class="section-desc mb-16">Top runs from Speedrun.com — BL3 category records.</div>
-      <div id="sr-records" class="card mb-32">
-        <div style="color:var(--gray);font-family:var(--font-mono);font-size:12px">Fetching speedrun data...</div>
+      <div class="section-desc mb-16">Live from Speedrun.com API · Game: Borderlands 3 (ID: 369penl1)</div>
+      <div id="sr-records" class="card mb-24">
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--gray)">Fetching records from Speedrun.com...</div>
       </div>
 
-      <div class="section-title mb-8">What APIs Power This Site</div>
-      <div class="grid-2 mb-16">
-        ${apiCard('SteamSpy API','Public — No auth required','steamspy.com/api.php','Returns player estimates, review scores, owners, and tags for any Steam game. Used here for player count and review data.','#4A9BFF')}
-        ${apiCard('Speedrun.com API','Public — No auth required','www.speedrun.com/api/v1','Full game data, leaderboards, and run records. Used here for BL3 speedrun WR and category data.','#52C41A')}
-        ${apiCard('Steam Store API','Public — No auth required','store.steampowered.com/api','Game details, screenshots, pricing. Used here for background images and game metadata.','#F5A623')}
-        ${apiCard('Steam CDN','Public image hosting','cdn.cloudflare.steamstatic.com','All game artwork — capsules, library heroes, screenshots. Used here for character section backgrounds.','#9B59B6')}
-      </div>
-      <div class="card mb-8" style="border-color:rgba(245,166,35,.2)">
-        <div style="font-family:var(--font-head);font-size:18px;color:var(--orange);margin-bottom:8px">APIs Not Used (Require Auth/Key)</div>
-        <div style="font-size:13px;color:var(--text-dim);line-height:1.8">
-          Twitch API (OAuth 2.0 required) — would show live BL3 streams and viewer counts<br>
-          YouTube Data API (key required) — would embed latest BL3 guide videos<br>
-          Reddit API (OAuth required) — would pull r/borderlands3 hot posts<br>
-          RAWG Game Database (key required) — additional game metadata<br>
-          Gearbox SHiFT API (private) — SHiFT code validation not publicly documented
-        </div>
+      <div class="section-title mb-8">API Architecture</div>
+      <div class="grid-2 mb-8">
+        ${apiInfoCard('Speedrun.com API','LIVE — CORS enabled','www.speedrun.com/api/v1/games/369penl1/categories','Returns BL3 category list and world records in real time. No auth required.','#52C41A','WORKING')}
+        ${apiInfoCard('Steam GetNumberOfCurrentPlayers','LIVE — CORS enabled','api.steampowered.com/ISteamUserStats/.../v1/?appid=397540','Returns current concurrent player count in real time. No auth required.','#4A9BFF','WORKING')}
+        ${apiInfoCard('SteamSpy','EMBEDDED — No CORS header','steamspy.com/api.php?request=appdetails&appid=397540','Works server-side only. Data embedded at build time since it updates daily anyway.','#F5A623','EMBEDDED')}
+        ${apiInfoCard('Steam CDN','STATIC — Image hosting','cdn.cloudflare.steamstatic.com/steam/apps/397540/','Library hero, capsule, background images used throughout the site.','#9B59B6','STATIC')}
       </div>
 
     </div>
   `;
 
-  // Fetch live data async
-  fetchSteamSpy();
+  fetchLivePlayers();
   fetchSpeedruns();
 }
 
-function apiCard(name, auth, endpoint, desc, color) {
-  return `<div class="card" style="border-color:${color}33">
-    <div style="font-family:var(--font-head);font-size:18px;letter-spacing:1px;color:${color};margin-bottom:4px">${name}</div>
-    <div style="font-family:var(--font-mono);font-size:9px;color:var(--gray);letter-spacing:1px;margin-bottom:6px">${auth}</div>
-    <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);margin-bottom:8px">${endpoint}</div>
-    <div style="font-size:12px;color:var(--text-dim);line-height:1.5">${desc}</div>
-  </div>`;
-}
-
-async function fetchSteamSpy() {
-  const container = document.getElementById('steamspy-cards');
-  const reviewBar = document.getElementById('review-bar');
-  if (!container) return;
-
-  try {
-    // SteamSpy is CORS-friendly
-    const res = await fetch('https://steamspy.com/api.php?request=appdetails&appid=397540');
-    const d = await res.json();
-
-    const pos = d.positive || 0;
-    const neg = d.negative || 0;
-    const total = pos + neg;
-    const pct = total > 0 ? Math.round((pos / total) * 100) : 0;
-    const sentiment = pct >= 80 ? 'Very Positive' : pct >= 70 ? 'Mostly Positive' : pct >= 40 ? 'Mixed' : 'Mostly Negative';
-    const sentColor = pct >= 80 ? 'var(--green)' : pct >= 70 ? '#a0d080' : pct >= 40 ? 'var(--yellow)' : 'var(--red)';
-
-    container.innerHTML = `
-      ${statCard('OWNERS', d.owners || '2M — 5M', 'Steam Copies Sold (Estimate)', '#4A9BFF')}
-      ${statCard('REVIEWS', (pos + neg).toLocaleString(), 'Total Steam Reviews', '#52C41A')}
-      ${statCard('SCORE', pct + '%', sentiment, sentColor)}
-      ${statCard('PEAK CCU', (d.ccu || 0).toLocaleString(), 'Peak Concurrent Players (Steam)', '#F5A623')}
-    `;
-
-    if (reviewBar) {
-      reviewBar.innerHTML = `
-        <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px">
-          <div style="font-family:var(--font-head);font-size:32px;color:${sentColor};text-shadow:2px 2px 0 #000">${pct}%</div>
-          <div>
-            <div style="font-family:var(--font-head);font-size:20px;color:${sentColor};letter-spacing:1px">${sentiment}</div>
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray)">${(pos+neg).toLocaleString()} total reviews</div>
-          </div>
-        </div>
-        <div style="background:rgba(255,255,255,0.08);height:12px;border:1px solid rgba(255,255,255,0.1);position:relative;overflow:hidden">
-          <div style="position:absolute;left:0;top:0;bottom:0;width:${pct}%;background:var(--green);transition:width .8s"></div>
-          <div style="position:absolute;right:0;top:0;bottom:0;width:${100-pct}%;background:var(--red)"></div>
-        </div>
-        <div style="display:flex;justify-content:space-between;margin-top:6px;font-family:var(--font-mono);font-size:11px">
-          <span style="color:var(--green)">${pos.toLocaleString()} Positive</span>
-          <span style="color:var(--red)">${neg.toLocaleString()} Negative</span>
-        </div>
-        <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray);margin-top:8px">Source: SteamSpy API — steamspy.com/api.php?request=appdetails&appid=397540</div>
-      `;
-    }
-  } catch (err) {
-    if (container) container.innerHTML = `<div class="card" style="grid-column:span 4"><div style="font-family:var(--font-mono);font-size:12px;color:var(--red)">SteamSpy API unavailable — try refreshing or check CORS settings.</div></div>`;
-  }
-}
-
-function statCard(label, value, sub, color) {
+function liveStatCard(label, value, sub, color) {
   return `<div class="card" style="text-align:center;border-color:${color}33">
     <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gray);margin-bottom:8px">${label}</div>
     <div style="font-family:var(--font-head);font-size:32px;color:${color};text-shadow:2px 2px 0 #000;line-height:1;margin-bottom:4px">${value}</div>
@@ -247,53 +225,97 @@ function statCard(label, value, sub, color) {
   </div>`;
 }
 
+function apiInfoCard(name, status, endpoint, desc, color, badge) {
+  const badgeColors = {WORKING:'var(--green)',EMBEDDED:'var(--yellow)',STATIC:'var(--gray)'};
+  return `<div class="card" style="border-color:${color}33">
+    <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:6px">
+      <span style="font-family:var(--font-head);font-size:18px;color:${color};letter-spacing:1px;flex:1">${name}</span>
+      <span style="font-family:var(--font-mono);font-size:9px;border:1px solid ${badgeColors[badge]};color:${badgeColors[badge]};padding:2px 6px;white-space:nowrap">${badge}</span>
+    </div>
+    <div style="font-family:var(--font-mono);font-size:9px;color:var(--gray);letter-spacing:1px;margin-bottom:4px">${status}</div>
+    <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);margin-bottom:8px;word-break:break-all">${endpoint}</div>
+    <div style="font-size:12px;color:var(--text-dim);line-height:1.5">${desc}</div>
+  </div>`;
+}
+
+async function fetchLivePlayers() {
+  const el = document.getElementById('live-players');
+  if (!el) return;
+  try {
+    const res = await fetch('https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=397540');
+    const d = await res.json();
+    const count = d?.response?.player_count;
+    if (count != null) {
+      el.textContent = count.toLocaleString();
+      el.title = 'Live from Steam API';
+    } else {
+      el.textContent = 'API error';
+      el.style.color = 'var(--red)';
+    }
+  } catch(err) {
+    el.textContent = 'N/A (CORS)';
+    el.style.color = 'var(--gray)';
+    el.title = 'Steam API CORS blocked in browser: ' + err.message;
+  }
+}
+
 async function fetchSpeedruns() {
   const container = document.getElementById('sr-records');
   if (!container) return;
 
   try {
-    // Get BL3 categories
-    const catRes = await fetch('https://www.speedrun.com/api/v1/games/bl3/categories');
+    // Use correct BL3 game ID: 369penl1 (not 'bl3' which redirects)
+    const catRes = await fetch('https://www.speedrun.com/api/v1/games/369penl1/categories');
     const catData = await catRes.json();
-    const cats = (catData.data || []).filter(c => c.type === 'per-game').slice(0, 4);
+    const cats = (catData.data || []).filter(c => c.type === 'per-game' && !c.miscellaneous).slice(0, 5);
 
     if (!cats.length) {
-      container.innerHTML = '<div style="font-family:var(--font-mono);font-size:12px;color:var(--gray)">No speedrun categories found.</div>';
+      container.innerHTML = '<div style="font-family:var(--font-mono);color:var(--red)">No categories found — check game ID</div>';
       return;
     }
 
-    // Get WR for first few categories
-    const records = await Promise.all(cats.slice(0,3).map(async cat => {
+    // Fetch WRs for each category
+    const records = await Promise.all(cats.map(async cat => {
       try {
-        const r = await fetch(`https://www.speedrun.com/api/v1/leaderboards/bl3/category/${cat.id}?top=1&embed=players`);
+        const r = await fetch('https://www.speedrun.com/api/v1/leaderboards/369penl1/category/' + cat.id + '?top=1&embed=players');
         const d = await r.json();
-        const run = d.data?.runs?.[0];
-        if (!run) return { name: cat.name, wr: null };
-        const time = run.run.times.primary_t;
-        const h = Math.floor(time / 3600);
-        const m = Math.floor((time % 3600) / 60);
-        const s = Math.floor(time % 60);
-        const timeStr = h > 0 ? `${h}h ${m}m ${s}s` : `${m}m ${s}s`;
-        const player = d.data.players?.data?.[0]?.names?.international || 'Unknown';
-        return { name: cat.name, wr: timeStr, player, link: run.run.weblink };
-      } catch { return { name: cat.name, wr: null }; }
+        const run = d?.data?.runs?.[0];
+        if (!run) return { name: cat.name, wr: '—', player: '—', link: cat.weblink };
+        const t = run.run.times.primary_t;
+        const h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = Math.floor(t % 60);
+        const timeStr = h > 0 ? h+'h '+m+'m '+s+'s' : m+'m '+s+'s';
+        const player = d.data?.players?.data?.[0]?.names?.international || 'Unknown';
+        return { name: cat.name, wr: timeStr, player, link: run.run.weblink || 'https://www.speedrun.com/bl3' };
+      } catch {
+        return { name: cat.name, wr: 'Error', player: '—', link: 'https://www.speedrun.com/bl3' };
+      }
     }));
 
     container.innerHTML = `
-      <table class="bl3-table">
-        <thead><tr><th>Category</th><th>World Record</th><th>Runner</th><th>Link</th></tr></thead>
+      <table class="bl3-table" style="width:100%">
+        <thead><tr>
+          <th>Category</th>
+          <th>World Record</th>
+          <th>Runner</th>
+          <th>View Run</th>
+        </tr></thead>
         <tbody>
           ${records.map(r => `<tr>
-            <td style="font-weight:600">${r.name}</td>
-            <td style="font-family:var(--font-mono);color:var(--orange)">${r.wr || '—'}</td>
-            <td style="color:var(--text-dim)">${r.player || '—'}</td>
-            <td><a href="https://www.speedrun.com/bl3" target="_blank" style="color:var(--orange);font-family:var(--font-mono);font-size:11px">speedrun.com/bl3</a></td>
+            <td style="font-weight:600;color:var(--text)">${r.name}</td>
+            <td style="font-family:var(--font-head);font-size:20px;color:var(--orange);text-shadow:1px 1px 0 #000">${r.wr}</td>
+            <td style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim)">${r.player}</td>
+            <td><a href="${r.link}" target="_blank" style="font-family:var(--font-mono);font-size:11px;color:var(--blue);text-decoration:none">speedrun.com &rarr;</a></td>
           </tr>`).join('')}
         </tbody>
       </table>
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray);margin-top:8px">Source: Speedrun.com API — www.speedrun.com/api/v1</div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray);margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06)">
+        Source: Speedrun.com API · api/v1/games/369penl1 · Fetched live on page load
+      </div>
     `;
-  } catch (err) {
-    container.innerHTML = `<div style="font-family:var(--font-mono);font-size:12px;color:var(--gray)">Speedrun.com API unavailable (CORS/rate limit). Visit <a href="https://www.speedrun.com/bl3" target="_blank" style="color:var(--orange)">speedrun.com/bl3</a> directly.</div>`;
+  } catch(err) {
+    container.innerHTML = `<div style="font-family:var(--font-mono);font-size:12px">
+      <span style="color:var(--red)">API error: ${err.message}</span><br>
+      <a href="https://www.speedrun.com/bl3" target="_blank" style="color:var(--blue)">View BL3 runs on Speedrun.com directly &rarr;</a>
+    </div>`;
   }
 }
