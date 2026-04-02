@@ -27,7 +27,7 @@ const CHAR_GUIDES = {
           { skill: 'Armored Infantry (4pts)', why: 'Gun damage + damage resistance while shield is up — always active early game' },
           { skill: 'Drowning in Brass (5pts)', why: 'Kill stack gun damage — procs on almost every kill, effectively permanent +15% gun dmg' },
           { skill: 'Fire in the Skag Den (3pts)', why: 'Splash damage deals bonus fire damage — this is the most Mayhem-scaled skill in the game, invest early' },
-          { skill: 'Torgue Cross-Promotion (3pts)', why: '40% chance to double splash radius — makes explosions cover the whole room' }
+          { skill: 'Torgue Cross-Promotion (3pts)', why: '24% chance to double splash radius — makes explosions cover the whole room. (8% per point; max 40% at 5/5 — invest more points when available)' }
         ],
         weapons: 'Any fire-element weapons. Assault rifles and SMGs preferred. Torgue sticky guns (Bounty Hunter pistol, purple Torgue shotguns) synergize perfectly with splash skills.',
         tips: [
@@ -47,7 +47,7 @@ const CHAR_GUIDES = {
         summary: 'Complete Demolition Woman for the grenade loop. This is when Moze becomes truly unstoppable.',
         actionSkill: 'Iron Bear with V-35 Grenade Launcher + Vanquisher Rocket Pod. Add Active Tracking augment to Vanquisher for homing rockets.',
         prioritySkills: [
-          { skill: 'Means of Destruction (3pts)', why: 'Splash damage returns grenades — combined with Vampyr = infinite grenade loop, infinite healing' },
+          { skill: 'Means of Destruction (3pts)', why: 'Splash damage returns grenades — combined with Vampyr = infinite grenade loop, infinite healing. IMPORTANT: MoD has a 2-second internal cooldown per grenade type — the loop works but you cannot spam grenades faster than this window allows.' },
           { skill: 'Vampyr (5pts)', why: 'Grenade hits heal Moze — THIS is why Moze is unkillable. 3% HP per grenade hit × multiple hits = full health on demand' },
           { skill: 'Stainless Steel Bear (5pts)', why: 'More IB health and fuel — lets you stay in IB longer, more Big Surplus/Auto Bear value' },
           { skill: 'Auto Bear (capstone)', why: 'IB stays deployed as autonomous turret after you exit — double your DPS window, massive splash damage' },
@@ -69,7 +69,7 @@ const CHAR_GUIDES = {
         color: '#E8272A',
         icon: '🔥',
         summary: 'Push to Mayhem 10. Bloodletter or Flare Bear build. Farm BiS gear. This is where Moze becomes the strongest character in the game.',
-        actionSkill: 'For Mozerker: Iron Bear exit immediately after deploying Auto Bear. For Flare Bear: Iron Cub (DLC Bear Mother tree) set to follow you.',
+        actionSkill: 'For Mozerker: Iron Bear exit immediately after deploying Auto Bear. For Flare Bear: Iron Cub (DLC Bear Mother tree) set to follow you. NOTE: Flare class mod gives +100% gun damage while Iron Bear/Iron Cub is active — it is NOT a fire kill skill or splash bonus. The mod makes your own guns hit harder during IB uptime.',
         prioritySkills: [
           { skill: 'Scorching RPMs (5pts, Bottomless Mags)', why: '+15% fire rate and +20% crit — IB gets double these bonuses. Always max this.' },
           { skill: 'Forge (capstone, Bottomless Mags)', why: 'Infinite ammo for currently held weapon. Combined with Click Click — run mag down for max bonus then let Forge regen it mid-fight.' },
@@ -81,7 +81,7 @@ const CHAR_GUIDES = {
         tips: [
           'Push straight to Mayhem 10 — M10 gear is valid all the way down to M1. A mediocre M10 gun beats a perfect M5 gun.',
           'Reroll anointments at Crazy Earl (250 Eridium each) — the right anoint can double your DPS',
-          'For Bloodletter build: get Deathless artifact first (any source, world drop), then Front Loader shield (The Unstoppable, Ambermire), then farm Bloodletter from Mouthpiece (Ascension Bluff)',
+          'For Bloodletter build: get Deathless artifact first (any source, world drop), then Front Loader shield (world drop — no dedicated source, farm Graveward or run M4+ for it), then farm Bloodletter class mod as a world drop from Graveward or Captain Traunt. NOTE: The Unstoppable (Ambermire) drops Big Boom Blaster, NOT Front Loader — do not confuse them.',
           'Shlooter artifact + Butt Stallion Milk from Borderlands Science machine = dramatically increased legendary drop rates',
           'Captain Traunt (Athenas) is the fastest M10 boss farm — 30 second kill time, Kaoson dedicated drop',
           'Arms Race (Designer\'s Cut DLC) has the Plasma Coil and Re-Volter — essential for both Mozerker and Khaos Queen Amara'
@@ -155,12 +155,12 @@ const CHAR_GUIDES = {
           { skill: 'Indiscriminate (5pts, Fist of Elements)', why: '40% chance bullets ricochet to nearby enemies — already strong, becomes ridiculous when combined with Ties That Bind' },
           { skill: 'Wildfire (5pts, Fist of Elements)', why: 'Status effects spread to nearby enemies — one shock proc spreads to entire group' },
           { skill: 'Laid Bare (3pts, Fist of Elements)', why: 'Enemies hit by AS take +20% damage from ALL sources — best debuff in game for co-op' },
-          { skill: 'Ties That Bind (capstone, Fist of Elements)', why: 'The single best mob-clear mechanic in BL3. Damage to Grasped target = damage to ALL linked enemies.' },
+          { skill: 'Ties That Bind (capstone, Fist of Elements)', why: 'The single best mob-clear mechanic in BL3. Grasped target links nearby enemies — damage dealt to the Grasped target is shared at a reduced percentage (~20-30% post-nerf) to all linked enemies. Still wipes entire rooms.' },
           { skill: 'Violent Tapestry (5pts, Mystical Assault)', why: 'Applying status effects gives Rush stacks — Rush = gun damage via Do Harm. Keep applying elements to keep stacks high.' }
         ],
         weapons: 'Recursion (Shock/Radiation, world drop) is insane with Indiscriminate — ricochets chain between all linked enemies. Any Plasma Coil or elemental SMG works. Hellshock (world drop) covers fire and shock.',
         tips: [
-          'The Ties That Bind loop: Phasegrasp the biggest enemy → shoot it → everything linked to it takes the same damage → chain kills fill Samsara stacks → HP and gun damage at max',
+          'The Ties That Bind loop: Phasegrasp the biggest enemy → shoot it → all linked enemies take a share of that damage (~20-30% each) → chain kills fill Samsara stacks → HP and gun damage at max. Still melts entire rooms despite the nerf.',
           'Phasezerker class mod (world drop) instantly gives max Rush stacks on AS activation — transforms Do Harm into massive damage burst',
           'Swap between elements based on enemy health type — don\'t just use one element',
           'Re-Volter shield (Arms Race DLC) is priority mid-game — shock burst on AS start = massive shock window for Sustainment',
@@ -259,7 +259,7 @@ const CHAR_GUIDES = {
           { skill: 'Interplanetary Stalker (5pts, Hunter)', why: 'Kill skill stacking — each enemy type killed (Human/Robot/Beast) gives different bonus, all stack to 15 total' },
           { skill: 'Leave No Trace (3pts, Hunter)', why: '36% chance to add ammo to mag on crit — with later Megavore (all hits crit), this makes ammo infinite' },
           { skill: 'Big Game (3pts, Hunter)', why: 'Hunter Skills get +75% bonus effect and duration — amplifies Interplanetary Stalker, Grim Harvest, The Most Dangerous Game' },
-          { skill: 'Grim Harvest (3pts, Hunter)', why: 'Kill Skill — killing adds +15% crit damage. With Big Game: +26% crit. With Bounty Hunter class mod: permanent.' },
+          { skill: 'Grim Harvest (3pts, Hunter)', why: 'Kill Skill — killing adds +15% crit damage. With Big Game: +26% crit. NOTE: Bounty Hunter class mod does NOT make Grim Harvest permanent — it triggers The Most Dangerous Game skill on Badass kills, which is a separate bonus. Grim Harvest still requires kills to maintain.' },
           { skill: 'Head Count (3pts, Hunter)', why: 'Crits reduce Fade Away cooldown — with Megavore (all hits crit), you\'re chain-using Fade Away constantly' }
         ],
         weapons: 'Jakobs Assault Rifles (Lucian\'s Call — crits ricochet to nearby enemies, chains through packs). Any shotgun with multiple pellets starts getting strong — each pellet can crit independently.',
@@ -374,7 +374,7 @@ const CHAR_GUIDES = {
           'Death Follows Close (capstone, Hitman) dramatically amplifies ALL kill skills — push toward it for late game',
           'The clone can swap weapon in your loadout slots — equip strong weapons in slots 1 and 3 for best clone damage'
         ],
-        farm: { boss: 'Jackpot Boss', location: 'VIP Tower, DLC1', drop: 'Seein\' Dead class mod (33% drop)', why: 'This single class mod transforms Zane from good to broken. ~4% per hit to activate ALL kill skills. Get this ASAP.' }
+        farm: { boss: 'Jackpot Boss', location: 'VIP Tower, DLC1', drop: 'Seein\' Dead class mod (33% drop)', why: 'This single class mod transforms Zane from good to broken. ~4% per hit to activate ALL kill skills + gives +10% to kill skill bonuses (was +25% pre-nerf). Get this ASAP.' }
       },
       {
         phase: 'Late Game',
