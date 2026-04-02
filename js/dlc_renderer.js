@@ -45,7 +45,8 @@ function seasonPassCard(sp) {
 }
 
 function dlcCard(d) {
-  var bossRows = d.bosses.map(function(b) {
+  var bossArr = d.bosses || d.armsRaceBosses || [];
+  var bossRows = bossArr.map(function(b) {
     return '<div style="padding:10px 14px;border-bottom:.5px solid rgba(255,255,255,0.06)">' +
       '<div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">' +
       '<div style="font-family:var(--font-head);font-size:16px;letter-spacing:1px;color:var(--white)">' + b.name + '</div>' +
