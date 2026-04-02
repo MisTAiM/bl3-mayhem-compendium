@@ -1,169 +1,142 @@
-# BORDERLANDS 3 — MAYHEM 10 COMPENDIUM
+<div align="center">
 
-```
-██████╗ ██╗      ██████╗
-██╔══██╗██║     ╚════██╗
-██████╔╝██║      █████╔╝
-██╔══██╗██║     ██╔═══╝
-██████╔╝███████╗███████╗
-╚═════╝ ╚══════╝╚══════╝
+# 🔥 BL3 MAYHEM COMPENDIUM
 
-MAYHEM 10 COMPENDIUM
-The Vault Hunter Bible
-```
+**The ultimate Borderlands 3 reference — built for Vault Hunters who don't mess around.**
 
-[![Made with HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](.)
-[![Styled with CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](.)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](.)
-[![Mayhem](https://img.shields.io/badge/Mayhem-10-orange?style=flat-square)](.)
-[![Level](https://img.shields.io/badge/Level-72-red?style=flat-square)](.)
+[![Live Site](https://img.shields.io/badge/▶_LIVE_SITE-Open_Now-F5A623?style=for-the-badge&color=F5A623)](https://bl3-mayhem-compendium-m6xn5jhd2-mistaims-projects.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-MisTAiM-181717?style=for-the-badge&logo=github)](https://github.com/MisTAiM/bl3-mayhem-compendium)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000?style=for-the-badge&logo=vercel)](https://vercel.com)
 
-> **The most complete Borderlands 3 Mayhem 10 reference guide on the internet.**  
-> Builds. Loadouts. Enemies. Planets. Weapons. Modifiers. Everything.
+![Mayhem](https://img.shields.io/badge/Mayhem-10%20%2F%2011-E8272A?style=flat-square)
+![Level](https://img.shields.io/badge/Level_Cap-72-9B59B6?style=flat-square)
+![VHs](https://img.shields.io/badge/Vault_Hunters-4-4A9BFF?style=flat-square)
+![DLCs](https://img.shields.io/badge/DLCs-6_Covered-52C41A?style=flat-square)
+![Deps](https://img.shields.io/badge/Dependencies-Zero-F5A623?style=flat-square)
+![Ads](https://img.shields.io/badge/Ads-None-F5A623?style=flat-square)
+
+<br/>
+
+> *"Everything you need to go from story-mode to Hemovorous-farming machine — one site, no login, no bullshit."*
 
 ---
 
-## What Is This
+</div>
 
-A fully static, zero-dependency website built with vanilla HTML, CSS, and JavaScript that serves as the complete reference manual for Borderlands 3 at Mayhem 10 / Level 72. No ads. No logins. No paywalls. Just information.
+## What Is This?
 
-The design mirrors Borderlands 3's iconic cel-shaded aesthetic — black outlines, orange accents, comic-book panels, and the Bangers typeface throughout. The sidebar stays fixed while content scrolls. Navigation is instant. Data is comprehensive.
+A **single-page Borderlands 3 reference** covering every Vault Hunter from level 1 through Mayhem 11. No frameworks. No npm install. No login. Open the page and it works.
+
+Built because the existing resources are scattered across five different wikis, three subreddits, and a YouTube video from 2020 that's been taken down.
 
 ---
 
-## Sections
+## Features
 
-### Elements Guide
-- Full elemental damage effectiveness matrix (all 6 elements vs all 4 health types)
-- DOT mechanics, stun effects, crowd control properties
-- The 4-slot weapon rule explained
-- Anointed enemy resist cycling guide
-- Badass armor caveat
+| Section | What's Inside |
+|---|---|
+| 🏠 **Home Base** | Quick nav cards, M10 Cardinal Rules, element chart snapshot |
+| ⚡ **Element Guide** | Full damage matrix — flesh, shield, armor, bone — every element, every matchup |
+| 🌀 **Mayhem Modifiers** | All 25+ modifiers rated: free damage vs reroll immediately |
+| 🔥 **Moze** | 4 skill trees · 4 builds · class mods · anointments · full L1→M11 guide |
+| 🌊 **Amara** | Khaos Queen + Face-Puncher breakdowns · elemental chain guide |
+| 🐾 **FL4K** | GITM Fade Away + Gamma Burst · Megavore mechanic · pet strategy |
+| ⚙️ **Zane** | Seein' Dead loop · SNTNL cryo anoint · Playing Dirty burst explained |
+| 🌍 **Planet Guide** | All planets — enemy health types, elemental weaknesses, farm zones |
+| 🗺️ **Planet Loadouts** | Recommended 4-slot loadouts per planet by enemy composition |
+| 🔫 **Weapons Vault** | BiS weapons — element, manufacturer, damage type, farm location |
+| 📀 **DLC Content** | All 6 DLCs, both Takedowns, 6 Proving Grounds, Slaughter arenas, seasonal events |
+| 📊 **Live Stats** | Real-time Steam player count + BL3 speedrun world records |
 
-### Vault Hunter Builds
+---
 
-#### Moze — The Gunner
-- 4 builds: Flare Splash, Bloodletter 1HP, Iron Bear Tank, Blast Master
-- All 3+ skill trees with key nodes and capstone marked
-- All class mods: Flare, Bloodletter, Blast Master
-- Planet loadout matrix (all 8 zones)
-- Best anointments with explanation
+## Character Guides
 
-#### Amara — The Siren
-- 4 builds: Face-puncher Melee, Spiritual Driver, Ties That Bind/Nimbus, Phaseflare Orb
-- Skill trees with Rush stack mechanics annotated
-- Class mods: Spiritual Driver, Nimbus, Phasezerker
-- Planet loadout matrix
-- Phasecast/Phaseslam/Phasegrasp anointment comparison
+Every Vault Hunter has a complete guide section:
 
-#### FL4K — The Beastmaster
-- 4 builds: 3-Shot Fade Away (GITM), Megavore Mobber, Gamma Burst Radiation, Rakk Attack Spam
-- Hunter tree Megavore path highlighted
-- Class mods: St4ckbot, Bounty Hunter, Red Fang, Peregrine
-- Planet loadout matrix with cryo freeze notes for Eden-6
-- Pet choice guide per build
+```
+📖 Overview        Difficulty · playstyle · strengths & weaknesses
+🌱 Early Game      Levels 1–20: skill order, action skill setup, weapons
+⚙️  Mid Game        Levels 20–40: build transition, first farm targets
+🔥 Late Game       Levels 40–72 + Mayhem: full build online, BiS farming
+🎯 Key Farms       6 boss farms each with locations, drops, kill tips
+📈 Guardian Rank   Priority order with character-specific reasoning
+🌀 Mayhem Mods     Which modifiers are free damage vs reroll
+```
 
-#### Zane — The Operative
-- 4 builds: Seein' Dead God, Clone Swap Speed, Barrier Tank, MNTIS Cold Warrior
-- Kill skill synergy map
-- Class mods: Seein' Dead (tier: mandatory), Antifreeze, Executor
-- Planet loadout matrix
-- Digi-Clone vs SNTNL vs Barrier comparison
+---
 
-### Planet Guide
-Six planets + DLC worlds with:
-- All enemy factions and their health bar composition
-- Elemental priority per faction
-- Boss intel: health types, drop pools, fight tips
-- Zone listing
+## DLC Coverage
 
-**Planets covered:**
-- Pandora — COV, Skags, Rakk, Spiderants, Varkids, Goliaths
-- Promethea — Maliwan Soldiers, Robots, Ratches, Anointed Maliwan
-- Athenas — Maliwan Detachment, Ratches, Monks
-- Eden-6 — Saurians, Jabbers, Jakobs Guards, Tinks, Wolven
-- Nekrotafeyo — Guardians (all four types with resist cycling mechanics)
-- DLC1, DLC2, DLC3, DLC4, DLC5
+### Season Pass 1
+| DLC | Planet | Released | Key Drops |
+|---|---|---|---|
+| Moxxi's Heist of the Handsome Jackpot | Handsome Jackpot | Dec 2019 | Seein' Dead · St4ckbot · Ion Cannon · Lucky 7 |
+| Guns, Love, and Tentacles | Xylourgos | Mar 2020 | Old God · Yellowcake · Conductor |
+| Bounty of Blood | Gehenna | Jun 2020 | Flipper · Light Show · Complex Root · Gargoyle |
+| Psycho Krieg & the Fantastic Fustercluck | Krieg's Mind | Sep 2020 | Flare · Dragon · Company Man |
 
-### Planet Loadouts
-A complete matrix table for all 4 characters across 8 zones.  
-Every cell shows the exact weapon to use in that slot, color-coded by element:
+### Season Pass 2
+| DLC | Key Feature | Key Drops |
+|---|---|---|
+| Designer's Cut | Arms Race + 4th Skill Trees for every VH | Plasma Coil · Re-Volter · Torrent |
+| Director's Cut | Hemovorous Raid Boss + Vault Cards | Shlooter · Atlas Replay · Ionic Disruptor |
 
-| Zone | Slot 1 | Slot 2 | Slot 3 | Slot 4 |
-|------|--------|--------|--------|--------|
-| Pandora | Fire | Shock | Corrosive | Radiation |
-| Promethea | Shock | Corrosive | Fire | Radiation |
-| ... | | | | |
+### Free Content
+- **Maliwan Takedown** — Wotan the Invincible → Redistributor
+- **Guardian Breach** — Anathema the Relentless → Skullmasher, Reflux
+- **6 Proving Grounds** — True Trials mode with M6+ expanded loot pools
+- **4 Circles of Slaughter** — including the Titan Eridium loop (500 per round)
+- **Seasonal Events** — Bloody Harvest, Revenge of the Cartels, Broken Hearts Day, Loot the Universe
 
-### Weapons Vault
-- **Mayhem Exclusives** — 8 weapons that only drop at M6+
-- **BiS Legendaries** — All top-tier non-exclusive legendaries
-- **Artifacts** — Pearl of Ineffable Knowledge, Blast Master, Unleash the Dragon, and more
-- **Shields** — Front Loader, Transformer, Bands of Sythropia, Revolter
-- **Grenades** — Hex, Fish Slap, Cloning Maddening Tracker
-- **M10 Scaling Table** — damage multiplier at every Mayhem level
+---
 
-### Mayhem Modifiers
-- All 25+ modifiers across 4 difficulty tiers (Easy / Medium / Hard / Very Hard)
-- Each modifier rated: GREAT / GOOD / MANAGEABLE / BAD / TERRIBLE / EXPLOITABLE
-- Farm tips per modifier
-- Character-specific exploits (FL4K Holy Crit, Amara Slayer combo)
-- Ideal M10 modifier combination
-- Mayhem-scaled hidden skill multiplier table
+## Tech Stack
+
+```
+bl3-mayhem-compendium/
+├── index.html                  # Single page app — everything renders here
+├── css/
+│   └── style.css               # BL3 cel-shaded design system — 2,100+ lines
+├── js/
+│   ├── data.js                 # All builds, weapons, class mods, anointments
+│   ├── guides.js               # Leveling guides for all 4 Vault Hunters
+│   ├── skilltrees.js           # All 16 skill trees (4 characters × 4 trees)
+│   ├── app.js                  # Nav routing, page builders, state
+│   ├── skilltree_builder.js    # Interactive skill tree renderer
+│   ├── characters_live.js      # Steam API + Speedrun.com live data
+│   ├── guide_renderer.js       # Leveling guide UI renderer
+│   ├── dlc_data.js             # All DLC — 6 DLCs + free content + events
+│   └── dlc_renderer.js         # DLC section builder
+└── api/
+    └── players.js              # Vercel serverless — Steam player count proxy
+```
+
+**Zero dependencies. No React. No npm. No build step.** Clone and open `index.html`.
 
 ---
 
 ## Design System
 
-The visual design is built around BL3's cel-shaded aesthetic:
-
-- **Font:** Bangers (headers) + Rajdhani (body) + Share Tech Mono (stats)
-- **Colors:** Orange `#F5A623` primary, black `#0a0a0a` background, element-matched accents
-- **Borders:** 3px solid black outlines, offset box-shadows for comic-book cel-shading
-- **Background:** Radial dot halftone pattern
-- **Sidebar:** Fixed position, always visible, never moves on scroll
-- **3D Effects:** CSS perspective transforms on weapon cards (hover), 3D text-shadow on headers
-- **Skill Tree:** Connected node graph per character, key/capstone nodes highlighted
-
----
-
-## File Structure
+Built to match BL3's cel-shaded aesthetic.
 
 ```
-bl3-mayhem-compendium/
-├── index.html          — Single-page app, all sections
-├── css/
-│   └── style.css       — Complete BL3 theme, 800+ lines
-├── js/
-│   ├── data.js         — All game data (characters, weapons, planets, modifiers)
-│   └── app.js          — Navigation, dynamic rendering, interactivity
-└── README.md
+Colors:
+  --orange  #F5A623   Primary — headers, BiS ratings, key callouts
+  --red     #E8272A   Danger — Moze Demo Woman tree, weakness
+  --blue    #4A9BFF   Info — Bottomless Mags, Zane Under Cover
+  --green   #52C41A   Success — FL4K Master tree, strengths
+  --purple  #9B59B6   Amara Mystical Assault, DLC2
+  --cyan    #00D4FF   Zane Professional, special callouts
+  --bg      #0a0a0a   Near-black background
+
+Fonts: Bangers (headers) · Rajdhani (body) · Share Tech Mono (data/stats)
+Style: 3px black borders · 5px drop shadows · halftone dot background
 ```
 
 ---
 
-## Data Coverage
-
-| Category | Count |
-|----------|-------|
-| Characters with builds | 4 |
-| Total builds documented | 16 |
-| Planets covered | 6+ (+ all DLCs) |
-| Enemy factions with elemental intel | 30+ |
-| BiS weapons listed | 18+ |
-| Class mods with full stats | 12+ |
-| Mayhem modifiers | 25+ |
-| Artifacts | 6 |
-| Shields | 6 |
-| Grenades | 4 |
-| Anointments documented | 20+ |
-| Planet loadout cells | 64 |
-
----
-
-## How to Run
-
-No build step, no dependencies, no server required.
+## Run Locally
 
 ```bash
 git clone https://github.com/MisTAiM/bl3-mayhem-compendium
@@ -171,57 +144,65 @@ cd bl3-mayhem-compendium
 open index.html
 ```
 
-Or serve locally:
+That's the entire setup. No `npm install`. No `node_modules`. No config files.
 
-```bash
-python3 -m http.server 8080
-# then open http://localhost:8080
+---
+
+## APIs
+
+| API | Purpose | Notes |
+|---|---|---|
+| Steam Web API | Live BL3 player count | Proxied via Vercel serverless (CORS-safe) |
+| Speedrun.com | BL3 Any% world record | Game ID: `369penl1` |
+| SteamSpy | Ownership estimate | Embedded as static constant (browser CORS blocked) |
+
+Live data auto-refreshes every 60 seconds.
+
+---
+
+## Data Accuracy
+
+All content verified against Lootlemon, MentalMars, Borderlands Wiki, and in-game testing.
+
+**Known community guide errors corrected:**
+
+| Wrong | Correct |
+|---|---|
+| Flare = "fire kill splash damage" | Flare = +100% weapon dmg while Iron Bear/Cub active |
+| Seein' Dead = "+25% Kill Skill bonus" | Nerfed to +10% · ~4% proc chance per hit |
+| Bloodletter BiS = Otto Idol | BiS artifact = Deathless |
+| Zane's 4th tree = "Secret Agent" | Correct name: The Professional |
+| FL4K GB build uses "Barbarous Heart" | Correct skill: Barbaric Yawp (Barbarous Heart doesn't exist) |
+
+---
+
+## By The Numbers
+
+```
+4   Vault Hunters      16  Skill Trees        276+ Skill Nodes
+16  M10 BiS Builds     6   DLCs Covered       80+  Legendary Weapons
+40+ Boss Farm Routes   6   Proving Grounds    4    Seasonal Events
+4,200+ Lines JS        2,100+ Lines CSS       0    External Dependencies
 ```
 
 ---
 
-## Key Takeaways for M10
+## Contributing
 
-1. **Element matching is not optional.** Wrong element = 50-70% less damage. M10 HP pools are so large that mismatching will make fights feel impossible.
+Found a wrong drop rate? Better farm route? Missing weapon?
 
-2. **Your class mod defines your build.** Farm it first before any weapon. A wrong class mod cuts damage by 60%.
+1. Fork → Fix → PR
 
-3. **Anointments matter more than rarity.** A purple with the right anoint beats a legendary with the wrong one.
-
-4. **Seein' Dead is Zane.** No other class mod in the game is as essential to a character as Seein' Dead is to Zane. It is not optional.
-
-5. **Short Fuse and Fire in the Skag Den are Mayhem-scaled.** Tooltips are lying to you. Fire in the Skag Den is +93% fire damage per point at M10, not +15%. This is why Moze is S-tier.
-
-6. **Guardian Rank before anything else.** Dump all tokens into Enforcer tree (Dead-Eye + Hollow Point) before farming gear.
-
-7. **Anointed enemies cycle resist.** They have 3x HP at M10. Watch the glow color and switch elements. Always carry a kinetic/radiation option for full-immune phases.
+Or open an issue. Accuracy matters when people are farming 200 boss kills for one god-roll.
 
 ---
 
-## Character Tier Summary (M10)
+<div align="center">
 
-| Character | Peak Tier | Best At |
-|-----------|-----------|---------|
-| Moze | S | Raw splash DPS, survivability (Bloodletter) |
-| Amara | S | Melee one-shots, mob chain clear |
-| FL4K | S | Boss deletes (Fade Away), guaranteed crits |
-| Zane | S | Versatility, speed, kill skill uptime |
+**Built by [MisTAiM](https://github.com/MisTAiM) for [The Black Bulls Den](https://github.com/MisTAiM)**
 
-All four characters are S-tier at M10 with correct builds and BiS gear.
+*No ads. No tracking. Just the data.*
 
----
+[![MIT License](https://img.shields.io/badge/License-MIT-F5A623.svg)](https://opensource.org/licenses/MIT)
 
-## Planet Priority
-
-| Planet | Primary Element | Secondary |
-|--------|-----------------|-----------|
-| Pandora | Fire | Shock |
-| Promethea | Shock | Corrosive |
-| Athenas | Shock | Corrosive |
-| Eden-6 | Fire + Corrosive (equal) | Cryo |
-| Nekrotafeyo | All 4 mandatory | Kinetic fallback |
-
----
-
-*All information verified for Level 72 Mayhem 10. Data accurate as of final patch.*  
-*No mods, no exploits, no glitches — pure M10 endgame builds.*
+</div>
