@@ -10,118 +10,104 @@ function buildCharactersSection() {
   const chars = [
     {
       id: 'moze', name: 'Moze', title: 'The Gunner',
-      color: '#E8272A', border: '#E8272A',
-      img: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1097840/library_hero.jpg',
+      color: '#E8272A', panelClass: 'char-panel-moze', imgClass: 'char-art-moze',
+      eyebrow: 'Gunner — Vladof Ursa Corps',
       quote: '"Iron Bear is my therapist."',
-      lore: 'Former Vladof Ursa Corps soldier, Gunner First Class. Survived a failed operation in Darzaran Bay thanks to her 15-ton Iron Bear mech. Now a Vault Hunter dragging that mech across six galaxies. Reads paranormal romance novels in her downtime.',
-      class: 'Gunner', origin: 'Vladof Ursa Corps',
-      actionSkill: 'Iron Bear — 15-ton mech suit with dual configurable hardpoint weapons. Bears all your sins while you sit inside it.',
-      treeNames: ['Bottomless Mags', 'Demolition Woman', 'Shield of Retribution', 'Bear Mother (DLC)'],
-      sigBuild: 'Mozerker Forever — Bloodletter + Deathless + Front Loader. Permanent 1HP, permanent Desperate Measures, permanent +50% gun damage. Near-unkillable.',
-      sigWeapon: 'Kaoson (Corrosive) + Backburner (Radiation) + Light Show (Incendiary)',
-      dlcTree: 'Bear Mother — Iron Cub autonomous companion. Baby Nukes explosion on deploy/destroy (31x Mayhem scaled).',
-      stats: { offense: 95, defense: 85, mobility: 55, utility: 70, complexity: 65 }
+      lore: 'Former Vladof soldier, Gunner First Class. Survived Darzaran Bay thanks to a 15-ton mech. Now dragging that mech across six galaxies while reading paranormal romance novels in her downtime.',
+      as: 'Iron Bear — dual configurable hardpoint mech. Bears all your sins while you sit inside it.',
+      sigBuild: 'Mozerker Forever — Bloodletter + Deathless. Permanent 1HP = Desperate Measures maxed at all times.',
+      sigWeapon: 'Kaoson · Backburner · Light Show',
+      trees: ['Bottomless Mags', 'Demolition Woman', 'Shield of Retribution', 'Bear Mother'],
+      stats: { offense: 95, defense: 85, mobility: 55, utility: 70 }
     },
     {
       id: 'amara', name: 'Amara', title: 'The Siren',
-      color: '#9B59B6', border: '#9B59B6',
-      img: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1248830/library_hero.jpg',
+      color: '#9B59B6', panelClass: 'char-panel-amara', imgClass: 'char-art-amara',
+      eyebrow: 'Siren — Partali',
       quote: '"My fists are registered as sacred relics in six star systems."',
-      lore: 'Celebrity martial artist and champion of the people from Partali. One of only six Sirens in the universe, gifted with the power to channel elemental energy. Uses fists the size of freight cars as a matter of casual conversation.',
-      class: 'Siren', origin: 'Partali',
-      actionSkill: 'Phasecast / Phaseslam / Phasegrasp / Phaseflare — elemental action skills. Can pick any one and augment it.',
-      treeNames: ['Brawl', 'Fist of the Elements', 'Mystical Assault', 'Enlightened Force (DLC)'],
-      sigBuild: 'Face-puncher melee — Unleash the Dragon artifact + Find Your Center + Jab Cross. Permanent unresistable fire DOT. One-shot melee clears M10.',
-      sigWeapon: 'Face-puncher (12-pellet shotgun that counts as melee) + Plasma Coil + Hellshock',
-      dlcTree: 'Enlightened Force — Phaseflare orb of elemental destruction. Cold Hearted converts to Cryo — frozen enemies take 3x melee damage.',
-      stats: { offense: 90, defense: 60, mobility: 80, utility: 95, complexity: 85 }
+      lore: 'Celebrity martial artist and champion of the people. One of only six Sirens in the universe. She channels elemental energy through fists that can flatten a truck. She also has four extra glowing arms.',
+      as: 'Phase abilities — Phaseslam, Phasecast, Phasegrasp, Phaseflare. Pick one, augment it, devastate everything.',
+      sigBuild: 'Face-puncher Melee — Unleash the Dragon + Find Your Center. Permanent fire DOT on everything.',
+      sigWeapon: 'Face-puncher · Plasma Coil · Hellshock',
+      trees: ['Brawl', 'Fist of the Elements', 'Mystical Assault', 'Enlightened Force'],
+      stats: { offense: 90, defense: 60, mobility: 80, utility: 95 }
     },
     {
       id: 'flak', name: 'FL4K', title: 'The Beastmaster',
-      color: '#52C41A', border: '#52C41A',
-      img: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1232090/library_hero.jpg',
+      color: '#52C41A', panelClass: 'char-panel-flak', imgClass: 'char-art-flak',
+      eyebrow: 'Beastmaster — Unknown Factory',
       quote: '"The hunt is the harvest."',
-      lore: 'A robot of unknown origin who gained sentience and became a wandering Beastmaster. Travels with three loyal pets: Skag, Spiderant, and Jabber. Non-binary. Born in a factory, raised by the road. Keeps a meticulous kill count.',
-      class: 'Beastmaster', origin: 'Unknown factory',
-      actionSkill: 'Fade Away (3 guaranteed crits) / Gamma Burst (radiation pet) / Rakk Attack (multi-charge spam) — one + one pet.',
-      treeNames: ['Hunter', 'Stalker', 'Master', 'Trapper (DLC)'],
-      sigBuild: '3-Shot GITM — Guerrillas in the Mist augment fires all ammo in Fade Away window. St4ckbot stacks to +500% crit damage. Boss delete.',
-      sigWeapon: 'Skullmasher (5-pellet Jakobs sniper) + Monarch (Corrosive) + Reflux (Corrosive)',
-      dlcTree: 'Trapper — Gravity Snare CC + Loader Bot pet + Shared Soul capstone (pet gives FL4K infinite revives). Virtually unkillable solo.',
-      stats: { offense: 100, defense: 65, mobility: 70, utility: 75, complexity: 90 }
+      lore: 'A robot who gained sentience and became a wandering Beastmaster. Non-binary. Travels with three loyal pets. Keeps a meticulous kill count etched somewhere internal. Born in a factory, raised by the road.',
+      as: 'Fade Away (3 guaranteed crits) · Gamma Burst (radiation pet) · Rakk Attack (multi-charge spam). Pick one + one pet.',
+      sigBuild: 'GITM Boss Killer — Guerrillas in the Mist + St4ckbot. 5-pellet Skullmasher × 3 crit shots = instant boss delete.',
+      sigWeapon: 'Skullmasher · Monarch · Reflux',
+      trees: ['Hunter', 'Stalker', 'Master', 'Trapper'],
+      stats: { offense: 100, defense: 65, mobility: 70, utility: 75 }
     },
     {
       id: 'zane', name: 'Zane', title: 'The Operative',
-      color: '#4A9BFF', border: '#4A9BFF',
-      img: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1232091/library_hero.jpg',
-      quote: '"I\'ve done a lot of things I\'m not proud of. Way more things I am proud of though."',
-      lore: 'Retired black ops assassin, brother of Baron Flynt and Captain Flynt. Has since gone freelance. The only Vault Hunter who can equip TWO action skills simultaneously — at the cost of his grenade slot. Irish accent, questionable life choices, impeccable gadgets.',
-      class: 'Operative', origin: 'Partali (same planet as Amara)',
-      actionSkill: 'SNTNL Drone + Digi-Clone + Barrier Shield + MNTIS Shoulder Cannon — pick any two simultaneously.',
-      treeNames: ['Hitman', 'Doubled Agent', 'Under Cover', 'The Professional (DLC)'],
-      sigBuild: 'Seein\'s Dead God — Seein\' Dead mod activates ALL kill skills every ~4% hit. Playing Dirty doubles projectiles post-kill. Speed = gun damage via Violent Momentum.',
-      sigWeapon: 'Plasma Coil + Redistributor (shock chain) + Light Show + Yellowcake (radiation)',
-      dlcTree: 'The Professional — MNTIS Shoulder Cannon (3 charges). Eraser makes all crits pierce enemies. Art of War stacks damage after each shot.',
-      stats: { offense: 85, defense: 75, mobility: 100, utility: 100, complexity: 80 }
+      color: '#4A9BFF', panelClass: 'char-panel-zane', imgClass: 'char-art-zane',
+      eyebrow: 'Operative — Partali',
+      quote: "I've done a lot of things I'm not proud of. Way more things I am proud of though.",
+      lore: 'Retired black ops assassin. Brother of Baron Flynt. Speaks with an Irish accent. The only Vault Hunter who equips TWO action skills simultaneously — at the cost of his grenade slot. Impeccable gadgets.',
+      as: 'SNTNL Drone + Digi-Clone + Barrier + MNTIS Cannon. Pick any TWO. Loses grenade in exchange.',
+      sigBuild: "Seein Dead God — ~4% chance per hit activates ALL kill skills. Playing Dirty doubles projectiles. Speed = damage.",
+      sigWeapon: 'Plasma Coil · Redistributor · Light Show',
+      trees: ['Hitman', 'Doubled Agent', 'Under Cover', 'The Professional'],
+      stats: { offense: 85, defense: 75, mobility: 100, utility: 100 }
     }
   ];
 
-  const charCards = chars.map(c => {
-    const bars = Object.entries(c.stats).map(([stat, val]) => `
-      <div class="char-stat-row">
-        <span class="char-stat-label">${stat.toUpperCase()}</span>
-        <div class="char-stat-bar"><div class="char-stat-fill" style="width:${val}%;background:${c.color}"></div></div>
-        <span class="char-stat-num">${val}</span>
+  const statLabels = { offense: 'OFFENSE', defense: 'DEFENSE', mobility: 'MOBILITY', utility: 'UTILITY' };
+
+  const panels = chars.map(c => {
+    const statBars = Object.entries(c.stats).map(([k,v]) => `
+      <div class="char-stat-pill">
+        <span class="char-stat-pill-label">${statLabels[k]}</span>
+        <div class="char-stat-pill-bar"><div class="char-stat-pill-fill" style="width:${v}%;background:${c.color}"></div></div>
       </div>
     `).join('');
 
+    const treePills = c.trees.map((t,i) => `<span style="font-family:var(--font-mono);font-size:10px;border:1px solid ${c.color}44;color:${c.color};padding:2px 8px;${i===3?'border-color:var(--purple);color:var(--purple)':''}">${t}${i===3?' DLC':''}</span>`).join('');
+
     return `
-      <div class="char-gallery-card" style="--char-color:${c.color}">
-        <div class="char-hero" style="
-          background: linear-gradient(to right, rgba(0,0,0,0.95) 40%, rgba(0,0,0,0.5) 100%),
-                      url('${c.img}') right center/cover no-repeat;
-          border-bottom: 2px solid ${c.color};
-        ">
-          <div class="char-hero-text">
-            <div class="char-class-badge" style="border-color:${c.color};color:${c.color}">${c.class} — ${c.origin}</div>
-            <div class="char-hero-name" style="text-shadow: 3px 3px 0 #000,-1px -1px 0 #000,color:${c.color}">${c.name}</div>
-            <div class="char-hero-title" style="color:${c.color}">${c.title}</div>
-            <div class="char-hero-quote">${c.quote}</div>
+      <div class="char-panel-full ${c.panelClass}">
+        <!-- Creative background layer -->
+        <div class="char-bg"></div>
+        ${c.id === 'moze' ? '<div class="char-starburst"></div>' : ''}
+
+        <!-- Character art — right side -->
+        <div class="char-art-container">
+          <img class="char-art-img ${c.imgClass}" src="${c.id}.png" alt="${c.name}" loading="lazy" />
+        </div>
+
+        <!-- Info panel — left side -->
+        <div class="char-info-panel">
+          <div class="char-panel-eyebrow" style="color:${c.color}">${c.eyebrow}</div>
+          <div class="char-panel-name">${c.name}</div>
+          <div class="char-panel-title" style="color:${c.color}">${c.title}</div>
+          <div class="char-panel-quote" style="border-color:${c.color}">${c.quote}</div>
+          <div class="char-panel-lore">${c.lore}</div>
+
+          <div class="char-panel-stats-row">${statBars}</div>
+
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px">${treePills}</div>
+
+          <div class="char-panel-action-btns">
+            <button class="char-panel-btn primary" style="border-color:${c.color};color:${c.color}" onclick="showSection('${c.id}')">Full Builds + Skills &rarr;</button>
+            <button class="char-panel-btn secondary" onclick="showSection('skilltrees')">Skill Trees &rarr;</button>
           </div>
         </div>
 
-        <div class="char-body">
-          <div class="char-grid-2">
-            <div>
-              <div class="char-section-label">Background</div>
-              <div class="char-lore">${c.lore}</div>
-
-              <div class="char-section-label" style="margin-top:16px">Action Skill</div>
-              <div class="char-detail-box" style="border-color:${c.color}22;background:${c.color}08">${c.actionSkill}</div>
-
-              <div class="char-section-label" style="margin-top:16px">Skill Trees</div>
-              <div style="display:flex;flex-wrap:wrap;gap:4px">
-                ${c.treeNames.map(t => `<span class="char-tree-pill" style="border-color:${c.color}44;color:${c.color}">${t}</span>`).join('')}
-              </div>
-
-              <div class="char-section-label" style="margin-top:16px">DLC 4th Tree</div>
-              <div class="char-detail-box" style="border-color:#9B59B622;background:#9B59B608;border-left:3px solid #9B59B6">${c.dlcTree}</div>
-            </div>
-
-            <div>
-              <div class="char-section-label">Stat Profile</div>
-              ${bars}
-
-              <div class="char-section-label" style="margin-top:16px">Signature Build</div>
-              <div class="char-detail-box" style="border-color:${c.color}22;background:${c.color}08;border-left:3px solid ${c.color}">${c.sigBuild}</div>
-
-              <div class="char-section-label" style="margin-top:12px">Core Weapons</div>
-              <div class="char-detail-box" style="border-color:rgba(255,255,255,0.06);font-family:var(--font-mono);font-size:12px;color:var(--orange)">${c.sigWeapon}</div>
-
-              <button class="char-goto-btn" style="border-color:${c.color};color:${c.color}" onclick="showSection('${c.id}')">
-                Full Build Guide + Skill Trees &rarr;
-              </button>
-            </div>
+        <!-- Bottom info strip -->
+        <div class="char-panel-bottom">
+          <div class="char-bottom-item">
+            <span class="char-bottom-label">Action Skill</span>
+            <span class="char-bottom-value" style="color:${c.color}">${c.as}</span>
+          </div>
+          <div class="char-bottom-item" style="margin-left:auto">
+            <span class="char-bottom-label">Sig Weapon</span>
+            <span class="char-bottom-value" style="font-family:var(--font-mono);font-size:11px;color:var(--orange)">${c.sigWeapon}</span>
           </div>
         </div>
       </div>
@@ -132,13 +118,12 @@ function buildCharactersSection() {
     <div class="page-header">
       <div class="page-header-eyebrow">The Vault Hunters</div>
       <h1>Characters</h1>
-      <p>All four playable Vault Hunters — lore, stat profiles, signature builds, weapon choices, and DLC skill tree overviews. Click "Full Build Guide" to go to detailed builds and skill trees.</p>
+      <p>All four playable Vault Hunters — lore, stat profiles, signature builds, and action skills. Click any panel to go to full build guides.</p>
     </div>
-    <div class="content-body">
-      <div style="display:flex;flex-direction:column;gap:32px">${charCards}</div>
-    </div>
+    <div class="content-body">${panels}</div>
   `;
 }
+
 
 // ── LIVE STATS SECTION ─────────────────────────────────────
 function buildLiveSection() {
