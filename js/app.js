@@ -293,10 +293,20 @@ function charPanelHTML(id, char) {
   return `<div class="char-panel-full ${p.panelClass}" style="margin-bottom:0;border-bottom:none;box-shadow:none">
     <div class="char-bg"></div>
     ${id==='moze'?'<div class="char-starburst"></div>':''}
-    <div class="char-art-container">
+    <!-- WALLPAPER: character art blurred + darkened fills the whole panel background -->
+    <div style="position:absolute;inset:0;z-index:1;overflow:hidden">
+      <img src="${p.img}" alt=""
+        style="position:absolute;right:-5%;top:-5%;height:115%;width:auto;min-width:55%;
+               object-fit:cover;object-position:center top;
+               filter:blur(18px) brightness(0.22) saturate(1.4);
+               transform:scale(1.05);pointer-events:none;user-select:none" />
+    </div>
+    <!-- Left gradient overlay so text stays readable -->
+    <div style="position:absolute;inset:0;z-index:2;background:linear-gradient(to right, ${char.color}0a 0%, transparent 100%)"></div>
+    <div class="char-art-container" style="z-index:4">
       <img class="char-art-img ${p.imgClass}" src="${p.img}" alt="${char.name}" loading="eager" />
     </div>
-    <div class="char-info-panel">
+    <div class="char-info-panel" style="z-index:5;position:relative">
       <div class="char-panel-eyebrow" style="color:${char.color}">${p.eyebrow}</div>
       <div class="char-panel-name">${char.name}</div>
       <div class="char-panel-title" style="color:${char.color}">${char.title}</div>
@@ -305,7 +315,7 @@ function charPanelHTML(id, char) {
       <div class="char-panel-stats-row">${bars}</div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">${treePills}</div>
     </div>
-    <div class="char-panel-bottom">
+    <div class="char-panel-bottom" style="z-index:5">
       <div class="char-bottom-item">
         <span class="char-bottom-label">Action Skill</span>
         <span class="char-bottom-value" style="color:${char.color}">${p.as}</span>
