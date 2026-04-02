@@ -40,18 +40,18 @@ const BL3 = {
       ],
       builds: [
         {
-          name: 'Flare Splash', tier: 'S', type: 'DPS',
-          description: 'On fire kill: +100% splash for 8s. Permanent in mob content. Highest M10 DPS.',
+          name: 'Flare Bear (Iron Cub)', tier: 'S', type: 'IB/IC DPS',
+          description: 'Flare mod: up to +100% weapon damage while Iron Cub is active. With Eternal Machine capstone: infinite fuel = permanent damage cap. Iron Cub also triggers Baby Nukes radiation explosions at M10 (31x scaled). Community name: Flare Bear.',
           skills: ['Short Fuse (M10: 7x scaled)', 'Fire in the Skag Den (M10: 31x scaled)', 'Means of Destruction', 'Cloud of Lead', 'Scorching RPMs'],
           mod: 'Flare (5/5 MoD + 5/5 CoL rolls)', shield: 'Front Loader', artifact: 'Blast Master', grenade: 'Hex Incendiary',
           anoint: 'ASE +200% Splash Damage 18s',
           weapons: ['Light Show (Incendiary)', 'Backburner (Radiation)', 'Kyb\'s Worth (Fire/Corrosive)', 'Kaoson (Corrosive)']
         },
         {
-          name: 'Bloodletter 1HP', tier: 'S', type: 'Survivability',
-          description: 'Operate at 1HP permanently. Desperate Measures maxed 100% of the time. Deathless.',
+          name: 'Mozerker Forever (Bloodletter 1HP)', tier: 'S', type: 'Near-Unkillable DPS',
+          description: 'Named Mozerker Forever by MentalMars (v8.0 is current). Bloodletter converts ALL healing to shield. Deathless removes all HP. Front Loader reserves 60% HP as shield. Result: permanently at 1HP with massive shields = Desperate Measures always at +50% gun dmg.',
           skills: ['Thin Red Line', 'Desperate Measures', 'Selfless Vengeance', 'Vladof Ingenuity', 'Redistribution'],
-          mod: 'Bloodletter (+Thin Red Line +Desperate Measures)', shield: 'Front Loader', artifact: 'Otto Idol (Elemental Projector)', grenade: 'Hex',
+          mod: 'Bloodletter (+Thin Red Line +Desperate Measures)', shield: 'Front Loader', artifact: 'Deathless (removes all HP, doubles shield capacity — BiS for 1HP builds)', grenade: 'Hex',
           anoint: 'Under 50% HP: +150% Radiation Damage',
           weapons: ['Light Show (Corrosive)', 'Kaoson (Incendiary)', 'Plasma Coil', 'Backburner']
         },
@@ -444,7 +444,7 @@ const BL3 = {
   classMods: {
     moze: [
       { name: 'Flare', tier: 'S', effect: 'On fire kill: +100% splash dmg 8s', stats: 'Weapon Dmg + Fire Rate + Splash Dmg', skills: '+5 MoD, +5 Cloud of Lead', source: 'Evil Mordecai (DLC4)', note: 'Non-negotiable BiS for fire builds' },
-      { name: 'Bloodletter', tier: 'S', effect: 'Converts all HP regen to shield regen', stats: 'Weapon Dmg + Pistol Dmg + Shotgun Dmg', skills: '+Thin Red Line +Desperate Measures', source: 'Mouthpiece (Ascension Bluff)', note: 'Required for 1HP builds' },
+      { name: 'Bloodletter', tier: 'S', effect: 'ALL forms of healing (Vampyr, lifesteal, HP regen, HP restore) are instead applied to Shield. Makes Moze\'s damage-based healing (Vampyr from grenades) repair shields. Core of Mozerker Forever build.', stats: 'Weapon Dmg + Pistol Dmg + Shotgun Dmg', skills: '+Thin Red Line +Phalanx Doctrine +Desperate Measures', source: 'Mouthpiece (Ascension Bluff) — world drop or boss farm', note: 'Required for Mozerker 1HP build. Pair with: Deathless artifact + Front Loader shield + Vampyr skill + Hex grenade.' },
       { name: 'Blast Master', tier: 'A', effect: 'No grenade = stack splash up to +100%', stats: 'Splash Dmg + AOE Dmg + Weapon Dmg', skills: '+Short Fuse +Means of Destruction', source: 'World Drop', note: 'Never throw grenades while equipped' }
     ],
     amara: [
@@ -459,7 +459,7 @@ const BL3 = {
       { name: 'Peregrine', tier: 'A', effect: 'Rakk drop player grenades on hit', stats: 'Rakk Dmg + AS Dmg + Weapon Dmg', skills: '+Pack Tactics +Flock \'n Load', source: 'Eista the Invincible (DLC2)', note: 'Infinite grenade loop with Rakk Attack' }
     ],
     zane: [
-      { name: 'Seein\' Dead', tier: 'S+++', effect: 'Any damage procs ALL kill skills simultaneously', stats: 'Weapon Dmg + SMG Dmg + Fire Rate', skills: '+Donnybrook +Violent Violence +Playing Dirty', source: 'Jackpot the Jack\'s Bot (DLC1)', note: 'MANDATORY. Nothing even close to this mod for Zane.' },
+      { name: 'Seein\' Dead', tier: 'S+++', effect: 'Any damage procs ALL kill skills simultaneously', stats: 'Weapon Dmg + SMG Dmg + Fire Rate', skills: '+Donnybrook +Violent Violence +Playing Dirty', source: 'Jackpot boss — VIP Tower, Moxxi\'s Heist of the Handsome Jackpot DLC1 — ~33% dedicated drop rate', note: 'MANDATORY. Nothing even close to this mod for Zane.' },
       { name: 'Antifreeze', tier: 'A', effect: 'Sliding boosts action skill duration and damage', stats: 'Cryo Dmg + Move Speed + AS Dmg', skills: '+Violent Speed +Violent Momentum', source: 'Kukuwajack (DLC2)', note: 'BiS for cryo/speed builds. Pairs with Ice Breaker artifact.' },
       { name: 'Executor', tier: 'B+', effect: 'On kill: bonus crit damage for short time', stats: 'Crit Dmg + Pistol Dmg + Weapon Dmg', skills: '+Playing Dirty +Violent Violence', source: 'Wotan the Invincible', note: 'Good alternative when Seein\' Dead refuses to drop.' }
     ]
