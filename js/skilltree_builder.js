@@ -33,7 +33,7 @@ function buildSkillTreesSection() {
   `;
 }
 
-function renderCharTrees(charId) {
+function renderCharTrees(charId, compact) {
   const charData = SKILL_TREES[charId];
   if (!charData) return `<div style="color:var(--gray)">Data loading...</div>`;
 
@@ -110,15 +110,15 @@ function renderCharTrees(charId) {
   }).join('');
 
   const colorBg = { moze:'#E8272A', amara:'#9B59B6', flak:'#52C41A', zane:'#4A9BFF' }[charId] || color;
-  return `
+  const banner = compact ? '' : `
     <div style="display:flex;align-items:center;gap:20px;padding:20px 24px;background:${colorBg}12;border-bottom:3px solid ${colorBg};border-top:none;margin-bottom:20px">
       <div style="font-family:var(--font-head);font-size:56px;letter-spacing:4px;color:${colorBg};text-shadow:3px 3px 0 #000,-1px -1px 0 #000;line-height:1">${charData.name}</div>
       <div>
         <div style="font-family:var(--font-head);font-size:22px;letter-spacing:2px;color:var(--text-dim)">${charData.trees.length} Skill Trees — ${charData.trees.filter(t=>!t.dlc).length} Base + ${charData.trees.filter(t=>t.dlc).length} DLC</div>
         <div style="font-size:12px;color:var(--gray);margin-top:4px;font-family:var(--font-mono)">${charData.note}</div>
       </div>
-    </div>
-    <div class="st-trees-grid">${treesHTML}</div>
+    </div>`;
+  return `${banner}<div class="st-trees-grid">${treesHTML}</div>
     <div class="st-detail-panel" id="${detailPanelId}">
       <div style="font-size:13px;color:var(--text-dim)">Click any skill or action skill to see the full description and Mayhem 10 context.</div>
     </div>
