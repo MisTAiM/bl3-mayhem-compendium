@@ -1701,3 +1701,412 @@ body {
   .char-hero { height: 180px; }
   .char-hero-name { font-size: 48px; }
 }
+
+/* ── CREATIVE CHARACTER PANELS ────────────────────────────── */
+.char-panel-full {
+  position: relative;
+  overflow: hidden;
+  border: 3px solid;
+  box-shadow: 6px 6px 0 #000;
+  margin-bottom: 32px;
+  min-height: 480px;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ── MOZE PANEL — Hazard/Explosive/Industrial ── */
+.char-panel-moze {
+  border-color: #E8272A;
+  background: #0D0505;
+}
+.char-panel-moze .char-bg {
+  position: absolute;
+  inset: 0;
+  /* Diagonal hazard stripes + halftone */
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px, transparent 28px,
+      rgba(232,39,42,0.08) 28px, rgba(232,39,42,0.08) 32px
+    ),
+    radial-gradient(circle at 70% 50%, rgba(232,39,42,0.18) 0%, transparent 55%),
+    radial-gradient(circle, rgba(232,39,42,0.05) 1px, transparent 1px);
+  background-size: auto, auto, 20px 20px;
+}
+.char-panel-moze .char-bg::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 500px;
+  height: 500px;
+  background: 
+    radial-gradient(circle, rgba(232,39,42,0.25) 0%, rgba(245,166,35,0.08) 40%, transparent 70%);
+  border-radius: 50%;
+}
+/* Explosion starburst behind Moze */
+.char-panel-moze .char-starburst {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  height: 420px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(232,39,42,0.3) 0deg 10deg,
+    transparent 10deg 26deg,
+    rgba(245,166,35,0.2) 26deg 34deg,
+    transparent 34deg 48deg,
+    rgba(232,39,42,0.25) 48deg 58deg,
+    transparent 58deg 72deg,
+    rgba(245,166,35,0.15) 72deg 80deg,
+    transparent 80deg 96deg,
+    rgba(232,39,42,0.3) 96deg 106deg,
+    transparent 106deg 122deg,
+    rgba(245,166,35,0.2) 122deg 130deg,
+    transparent 130deg 148deg,
+    rgba(232,39,42,0.25) 148deg 158deg,
+    transparent 158deg 180deg,
+    rgba(232,39,42,0.3) 180deg 192deg,
+    transparent 192deg 206deg,
+    rgba(245,166,35,0.2) 206deg 216deg,
+    transparent 216deg 230deg,
+    rgba(232,39,42,0.25) 230deg 240deg,
+    transparent 240deg 258deg,
+    rgba(245,166,35,0.15) 258deg 268deg,
+    transparent 268deg 284deg,
+    rgba(232,39,42,0.3) 284deg 294deg,
+    transparent 294deg 310deg,
+    rgba(245,166,35,0.2) 310deg 320deg,
+    transparent 320deg 340deg,
+    rgba(232,39,42,0.25) 340deg 360deg
+  );
+  border-radius: 50%;
+}
+
+/* ── AMARA PANEL — Siren Energy / Purple Mystical ── */
+.char-panel-amara {
+  border-color: #9B59B6;
+  background: #080510;
+}
+.char-panel-amara .char-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 65% 45%, rgba(155,89,182,0.3) 0%, rgba(74,155,255,0.1) 40%, transparent 70%),
+    radial-gradient(ellipse at 80% 20%, rgba(74,155,255,0.15) 0%, transparent 50%),
+    radial-gradient(circle, rgba(155,89,182,0.04) 1px, transparent 1px);
+  background-size: auto, auto, 18px 18px;
+}
+/* Siren tattoo arc shapes */
+.char-panel-amara .char-bg::before {
+  content: '';
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 40px solid rgba(74,155,255,0.08);
+  box-shadow:
+    0 0 0 20px rgba(155,89,182,0.06),
+    0 0 0 40px rgba(74,155,255,0.04),
+    0 0 0 70px rgba(155,89,182,0.03),
+    inset 0 0 80px rgba(155,89,182,0.15);
+}
+.char-panel-amara .char-bg::after {
+  content: '';
+  position: absolute;
+  right: 30px;
+  top: 10%;
+  bottom: 10%;
+  width: 440px;
+  background:
+    radial-gradient(ellipse at center, rgba(74,155,255,0.2) 0%, transparent 60%);
+}
+
+/* ── FL4K PANEL — Bio-Mechanical / Hunter Green ── */
+.char-panel-flak {
+  border-color: #52C41A;
+  background: #050D03;
+}
+.char-panel-flak .char-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Circuit grid lines */
+    repeating-linear-gradient(90deg, rgba(82,196,26,0.04) 0px, rgba(82,196,26,0.04) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(0deg, rgba(82,196,26,0.04) 0px, rgba(82,196,26,0.04) 1px, transparent 1px, transparent 40px),
+    radial-gradient(circle at 65% 50%, rgba(82,196,26,0.2) 0%, rgba(82,196,26,0.05) 40%, transparent 65%);
+}
+.char-panel-flak .char-bg::before {
+  content: '';
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(82,196,26,0.18) 0%, transparent 70%);
+}
+.char-panel-flak .char-bg::after {
+  content: '';
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  border: 1px solid rgba(82,196,26,0.12);
+  box-shadow:
+    0 0 0 30px rgba(82,196,26,0.05),
+    0 0 0 70px rgba(82,196,26,0.03),
+    0 0 0 120px rgba(82,196,26,0.02);
+}
+
+/* ── ZANE PANEL — Holographic / Cyber Blue ── */
+.char-panel-zane {
+  border-color: #4A9BFF;
+  background: #02080F;
+}
+.char-panel-zane .char-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Perspective grid */
+    repeating-linear-gradient(
+      90deg,
+      rgba(74,155,255,0.06) 0px, rgba(74,155,255,0.06) 1px,
+      transparent 1px, transparent 60px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(74,155,255,0.04) 0px, rgba(74,155,255,0.04) 1px,
+      transparent 1px, transparent 60px
+    ),
+    radial-gradient(ellipse at 70% 50%, rgba(74,155,255,0.2) 0%, rgba(74,155,255,0.05) 40%, transparent 65%);
+}
+.char-panel-zane .char-bg::before {
+  content: '';
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  border: 1px solid rgba(74,155,255,0.18);
+  box-shadow:
+    0 0 0 40px rgba(74,155,255,0.05),
+    0 0 0 80px rgba(74,155,255,0.03),
+    0 0 0 140px rgba(74,155,255,0.015),
+    inset 0 0 60px rgba(74,155,255,0.1);
+}
+.char-panel-zane .char-bg::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  width: 520px;
+  background: linear-gradient(to left,
+    rgba(74,155,255,0.12) 0%,
+    rgba(74,155,255,0.04) 50%,
+    transparent 100%);
+}
+
+/* Character art positioning in panels */
+.char-art-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 52%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.char-art-img {
+  position: relative;
+  z-index: 3;
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(-4px 0 12px rgba(0,0,0,0.8));
+}
+
+/* Moze: slightly up and left since she leans */
+.char-art-moze { margin-bottom: -10px; max-height: 480px; }
+/* Amara: floating feel */
+.char-art-amara { max-height: 500px; margin-bottom: 0; }
+/* FL4K: grounded */
+.char-art-flak { max-height: 440px; margin-bottom: -8px; }
+/* Zane: full height */
+.char-art-zane { max-height: 490px; margin-bottom: -8px; }
+
+/* Left info panel */
+.char-info-panel {
+  position: relative;
+  z-index: 5;
+  width: 52%;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(to right, rgba(0,0,0,0.92) 70%, transparent 100%);
+}
+
+.char-panel-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.char-panel-name {
+  font-family: var(--font-head);
+  font-size: 80px;
+  letter-spacing: 4px;
+  line-height: 0.85;
+  color: var(--white);
+  text-shadow: 4px 4px 0 #000, -1px -1px 0 #000;
+  margin-bottom: 4px;
+}
+
+.char-panel-title {
+  font-family: var(--font-head);
+  font-size: 26px;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+.char-panel-quote {
+  font-size: 13px;
+  color: var(--gray);
+  font-style: italic;
+  margin-bottom: 20px;
+  padding-left: 12px;
+  border-left: 2px solid;
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+.char-panel-lore {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.char-panel-stats-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.char-stat-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.char-stat-pill-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gray);
+  text-transform: uppercase;
+}
+
+.char-stat-pill-bar {
+  width: 80px;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+}
+
+.char-stat-pill-fill { height: 100%; }
+
+.char-panel-action-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.char-panel-btn {
+  font-family: var(--font-head);
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  background: transparent;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.char-panel-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.char-panel-btn.primary { }
+.char-panel-btn.secondary {
+  border-color: rgba(255,255,255,0.2);
+  color: var(--text-dim);
+}
+.char-panel-btn.secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+/* Bottom info bar */
+.char-panel-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  background: rgba(0,0,0,0.85);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 40px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.char-bottom-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.char-bottom-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.char-bottom-value {
+  font-size: 12px;
+  color: var(--text);
+}
+
+@media (max-width: 900px) {
+  .char-panel-full { min-height: 320px; flex-direction: column; }
+  .char-art-container { position: relative; width: 100%; height: 260px; }
+  .char-info-panel { width: 100%; background: rgba(0,0,0,0.95); }
+  .char-panel-name { font-size: 56px; }
+  .char-panel-bottom { display: none; }
+}
