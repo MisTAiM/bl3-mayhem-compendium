@@ -33,10 +33,10 @@ const BL3 = {
       description: 'Former Vladof soldier who pilots a 15-ton mech called Iron Bear. The master of splash damage and infinite ammo. At M10 her Mayhem-scaled skills make her the queen of DPS.',
       actionSkill: 'Iron Bear — deploys a mech with two arm cannons. Moze enters the cockpit and fights from inside.',
       trees: [
-        { name: 'Bottomless Mags', color: '#4A9BFF', focus: 'Infinite Ammo / Fire Damage', capstone: 'Forge (constant mag regen)' },
-        { name: 'Shield of Retribution', color: '#F5A623', focus: 'Shields / Gun Damage', capstone: 'Tenacious Defense (+40% gun dmg on shield break)' },
-        { name: 'Bear Mother', color: '#E8272A', focus: 'Iron Bear / Splash', capstone: 'Auto Bear (IB stays as turret)' },
-        { name: 'Bear Trooper', color: '#9B59B6', focus: 'Iron Bear Armor / IB Weapons', capstone: 'Deadlines (IB duration)' }
+        { name: 'Bottomless Mags',      color: '#4A9BFF', focus: 'Infinite Ammo / Fire Damage',       capstone: 'Forge — constant ammo regen for equipped weapon' },
+        { name: 'Demolition Woman',     color: '#E8272A', focus: 'Splash Damage / Iron Bear AoE',     capstone: 'Auto Bear — IB stays as autonomous turret + self-destructs' },
+        { name: 'Shield of Retribution',color: '#F5A623', focus: 'Shields / Risk-Reward DPS',         capstone: 'Tenacious Defense — shield break = +40% shield restored + gun dmg boost' },
+        { name: 'Bear Mother (DLC)',    color: '#9B59B6', focus: 'Iron Cub Companion / Baby Nukes',   capstone: 'Eternal Machine — Iron Cub NEVER uses fuel (infinite uptime)' }
       ],
       builds: [
         {
@@ -59,7 +59,7 @@ const BL3 = {
           name: 'Iron Bear Tank', tier: 'A', type: 'Tank',
           description: 'IB becomes a full combat mech. Enormous health pool, massive splash from Hammerdown rockets.',
           skills: ['Stainless Steel Bear', 'Scorching RPMs', 'Auto Bear', 'Security Bear', 'Big Surplus (M10: 31x)'],
-          mod: 'Flare (5/5 SSB)', shield: 'Re-Charger', artifact: 'Pearl of Ineffable Knowledge', grenade: 'Hex',
+          mod: 'Raging Bear or Flare', shield: 'Re-Charger', artifact: 'Pearl of Ineffable Knowledge', grenade: 'Hex (Incendiary)',
           anoint: 'While Iron Bear Active: +75% Damage',
           weapons: ['Any Splash weapon', 'Backburner', 'Plaguebearer', 'Kyb\'s Worth']
         },
@@ -110,16 +110,16 @@ const BL3 = {
           name: 'Spiritual Driver', tier: 'S', type: 'Gun DPS',
           description: 'On Phasegrasp: +1% gun dmg per 1% missing HP for 8s. Move fast = more damage. Best M10 gun build.',
           skills: ['Sustainment', 'Violent Tapestry', 'Do Harm', 'Awakening', 'Mindfulness'],
-          mod: 'Spiritual Driver (+Gun Dmg +Move Speed)', shield: 'Front Loader', artifact: 'Pearl of Ineffable Knowledge', grenade: 'Hex',
+          mod: 'Spiritual Driver — On Phasegrasp: +1% gun dmg per 1% missing HP for 8s. Move fast = deal more damage.', shield: 'Front Loader (reserves 60% HP = always below 50% = max Spiritual Driver bonus)', artifact: 'Pearl of Ineffable Knowledge', grenade: 'Cloning Hex',
           anoint: 'Phasecast: +250% Weapon Damage 10s',
           weapons: ['Plasma Coil', 'Hellshock', 'Light Show (Incendiary)', 'Reflux (Corrosive)']
         },
         {
-          name: 'Ties That Bind / Nimbus', tier: 'S', type: 'Room Clear',
-          description: 'Ties that Bind + Nimbus Mod = entire rooms wiped simultaneously. Best mob clear in game.',
+          name: 'Khaos Queen (Ties That Bind)', tier: 'S', type: 'Room Clear / Best Mob Build',
+          description: 'Phasegrasp links all nearby enemies to one target (Ties That Bind). Damage to Grasped target is shared to ALL linked enemies. Nimbus mod creates DOT cloud on Phasegrasp — chain DOT kills entire rooms. Named Khaos Queen by Moxsy. Best mob-clear in BL3.',
           skills: ['Sustainment', 'Laid Bare', 'Violent Tapestry', 'Infusion', 'Conflux'],
-          mod: 'Nimbus (+AS Damage +Elemental)', shield: 'Transformer', artifact: 'Pearl of Ineffable Knowledge', grenade: 'Hex',
-          anoint: 'ASE Next 2 Mags +100% Elemental',
+          mod: 'Phasezerker (activate AS = max Rush stacks instantly → +75% weapon dmg at 25 stacks)', shield: 'Re-Volter (shock burst on AS start)', artifact: 'Pearl of Ineffable Knowledge', grenade: 'Cloning Hex',
+          anoint: 'ASE Next 2 Mags +100% Elemental Damage',
           weapons: ['Recursion (Shock/Rad)', 'Plasma Coil', 'Hellshock', 'Kaoson (Corrosive)']
         },
         {
@@ -151,10 +151,10 @@ const BL3 = {
       description: 'A mysterious Beastmaster robot who travels with three loyal pets. Masters of critical hits through Megavore and Fade Away. At M10 the crit loop with St4ckbot reaches infinite scaling.',
       actionSkill: 'Fade Away (3 guaranteed crits) / Gamma Burst (radiation pet) / Rakk Attack (rapid cooldown spam).',
       trees: [
-        { name: 'Hunter', color: '#F5A623', focus: 'Crits / Fade Away', capstone: 'Megavore (body shots = crits)' },
-        { name: 'Stalker', color: '#9B59B6', focus: 'Pet Survivability / Speed', capstone: 'Unblinking Eye (crit damage)' },
-        { name: 'Master', color: '#52C41A', focus: 'Pet Damage / Gamma Burst', capstone: 'Dominance (mind-control enemy)' },
-        { name: 'Trapper', color: '#4A9BFF', focus: 'Shield / Damage Reduction', capstone: 'Shared Soul (pet respawns you)' }
+        { name: 'Hunter',         color: '#F5A623', focus: 'Critical Hits / Fade Away / Megavore',      capstone: 'Megavore — ALL body-shot hits count as crits regardless of target area' },
+        { name: 'Stalker',        color: '#9B59B6', focus: 'Pet Synergy / Fade Away Augments',          capstone: 'Guerrillas in the Mist — fire freely during Fade Away (all shots still crit)' },
+        { name: 'Master',         color: '#52C41A', focus: 'Pet Damage / Gamma Burst Radiation',        capstone: 'Dominance — shoot an enemy to turn them against their allies temporarily' },
+        { name: 'Trapper (DLC)',  color: '#00D4FF', focus: 'Shield / CC / Survivability / Loader Bot',  capstone: 'Shared Soul — pet instantly revives FL4K from FFYL (virtually unkillable solo)' }
       ],
       builds: [
         {
@@ -176,7 +176,7 @@ const BL3 = {
         {
           name: 'Gamma Burst Radiation', tier: 'A', type: 'Tank / Safe',
           description: 'Red Fang pet taunts ALL enemies — FL4K becomes unkillable. Gamma radiation aura destroys mobs. Best for new M10 players.',
-          skills: ['Megavore', 'Barbarous Heart', 'Frenzy', 'Atomic Aroma', 'Persistence Hunter'],
+          skills: ['Megavore', 'Barbaric Yawp', 'Frenzy', 'Atomic Aroma', 'Persistence Hunter'],
           mod: 'Red Fang (+Pet Dmg, ALL enemy taunt)', shield: 'Frozen Heart (ASE anoint)', artifact: 'Atom Balm', grenade: 'Cloning Hex',
           anoint: 'Gamma Burst: +115% Radiation Damage',
           weapons: ['Any radiation weapon', 'Monarch (Corrosive)', 'Reflux (Corrosive)', 'Light Show']
@@ -210,15 +210,15 @@ const BL3 = {
       description: 'A retired Undercover operative with gadgets, a clone, and a killer drone. The only character who can equip two action skills. At M10 Seein\'s Dead makes his kill skills fire at all times.',
       actionSkill: 'SNTNL Drone / Digi-Clone / Barrier Shield / MNTIS Shoulder Cannon — two equipped simultaneously.',
       trees: [
-        { name: 'Hitman', color: '#F5A623', focus: 'SNTNL / Kill Skills', capstone: 'Seein\' Red (instant max kill skills on AS)' },
-        { name: 'Doubled Agent', color: '#9B59B6', focus: 'Digi-Clone / Swap', capstone: 'Like a Ghost (clone absorbs bullets)' },
-        { name: 'Under Cover', color: '#4A9BFF', focus: 'Barrier / Shield', capstone: 'Distributed Denial (barrier shares shield)' },
-        { name: 'Secret Agent', color: '#52C41A', focus: 'MNTIS / Hacks', capstone: 'Trick of the Light (cryo vulnerability)' }
+        { name: 'Hitman',               color: '#F5A623', focus: 'SNTNL Drone / Kill Skills / Speed',    capstone: "Death Follows Close — all Kill Skills dramatically enhanced" },
+        { name: 'Doubled Agent',        color: '#9B59B6', focus: 'Digi-Clone / Swap Mechanics',         capstone: "Like a Ghost — clone + Zane have 25% chance to phase bullets" },
+        { name: 'Under Cover',          color: '#4A9BFF', focus: 'Barrier Shield / Survivability',      capstone: "Distributed Denial — Barrier shares equipped shield effects with allies" },
+        { name: 'The Professional (DLC)',color:'#00D4FF', focus: 'MNTIS Shoulder Cannon / Crit Chains', capstone: "Proliferation — MNTIS gains extra charges, more charges = more damage per shot" }
       ],
       builds: [
         {
           name: 'Seein\' Dead God', tier: 'S', type: 'All-Purpose',
-          description: 'The definitive Zane build. ANY hit procs ALL kill skills via Seein\' Dead. Playing Dirty doubles next 5 shots. Violent Momentum speed = damage. Permanent max DPS.',
+          description: 'The definitive Zane build. Seein\' Dead has ~4% chance per hit to activate ALL kill skills simultaneously. Multi-pellet weapons (Plasma Coil, Monarch) fire many hits per trigger pull — effectively near-permanent kill skill activation. Playing Dirty doubles next 5 shots. Violent Momentum speed = damage. Permanent max DPS.',
           skills: ['Seein\' Red', 'Donnybrook', 'Playing Dirty', 'Violent Momentum', 'Boom. Enhance.'],
           mod: 'Seein\' Dead (NON-NEGOTIABLE — BiS by massive margin)', shield: 'Transformer', artifact: 'Pearl of Ineffable Knowledge', grenade: 'Cloning Maddening Tracker',
           anoint: 'SNTNL Active: +100% Cryo Damage',
@@ -241,9 +241,9 @@ const BL3 = {
           weapons: ['Redistributor', 'Plasma Coil', 'Light Show', 'Yellowcake']
         },
         {
-          name: 'MNTIS Cold Warrior', tier: 'B+', type: 'Cryo / CC',
-          description: 'MNTIS + Secret Agent tree. Trick of the Light makes cryo-affected enemies take bonus damage. Cryo everything, chain freeze, deal massive damage.',
-          skills: ['Seein\' Red', 'Trick of the Light', 'Violent Momentum', 'Playing Dirty', 'Donnybrook'],
+          name: 'MNTIS Cold Warrior (Professional Tree)', tier: 'A', type: 'Cryo / CC',
+          description: 'MNTIS Shoulder Cannon from The Professional DLC tree. Trick of the Light makes cryo-affected enemies take bonus damage. Cryo everything, chain freeze, deal massive damage.',
+          skills: ['Seein\' Red', 'Eraser (crits pierce enemies)', 'Violent Momentum', 'Playing Dirty', 'Donnybrook'],
           mod: 'Seein\' Dead', shield: 'Frozen Snowshoe', artifact: 'Ice Breaker (+25% dmg to frozen)', grenade: 'Cloning Hex Cryo',
           anoint: 'ASE Next 2 Mags +100% Cryo Damage',
           weapons: ['Plasma Coil (Cryo)', 'Kaoson (Cryo)', 'Light Show (Cryo)', 'O.P.Q. System']
