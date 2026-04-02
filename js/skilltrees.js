@@ -417,7 +417,7 @@ const SKILL_TREES = {
       {
         id: 'mysticalassault',
         name: 'Mystical Assault',
-        color: '#4A9BFF',
+        color: '#8A6FF0',
         focus: 'Rush Stacks / Gun Damage / Skill Spam',
         actionSkills: [
           {
@@ -476,7 +476,7 @@ const SKILL_TREES = {
       {
         id: 'enlightenedforce',
         name: 'Enlightened Force',
-        color: '#9B59B6',
+        color: '#00D4FF',
         dlc: true,
         dlcName: "Designer's Cut (Season Pass 2)",
         focus: 'Phaseflare Orb / Cryo / Elemental Versatility / Shield Interaction',
@@ -695,7 +695,7 @@ const SKILL_TREES = {
       {
         id: 'trapper',
         name: 'Trapper',
-        color: '#9B59B6',
+        color: '#00D4FF',
         dlc: true,
         dlcName: "Designer's Cut (Season Pass 2)",
         focus: 'Shields / CC / Survivability / Loader Bot Pet',
@@ -867,7 +867,7 @@ const SKILL_TREES = {
       {
         id: 'professional',
         name: 'The Professional',
-        color: '#9B59B6',
+        color: '#00D4FF',
         dlc: true,
         dlcName: "Designer's Cut (Season Pass 2)",
         focus: 'MNTIS Shoulder Cannon / Critical Hits / Charge Management',
