@@ -379,6 +379,8 @@ function charPage(char, id) {
         `).join('')}
       </div>
 
+      ${guideHTML(id)}
+
     </div>
   `;
 }
