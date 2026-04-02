@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
   buildMayhem();
   buildLoadouts();
   buildSkillTreesSection();
-  buildCharactersSection();
   buildLiveSection();
   showSection('home');
   animateBars();
@@ -45,7 +44,6 @@ function buildSidebar() {
     { id: 'planets',   label: 'Planet Guide',    group: 'World' },
     { id: 'loadouts',  label: 'Planet Loadouts', group: 'World' },
     { id: 'weapons',   label: 'Weapons Vault',   group: 'Arsenal' },
-    { id: 'characters', label: 'Vault Hunters',   group: 'Characters' },
     { id: 'skilltrees', label: 'Skill Trees',    group: 'Arsenal' },
     { id: 'live',       label: 'Live Stats',     group: 'Live' },
   ];
@@ -244,6 +242,78 @@ function buildElements() {
 function varCSS(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
 
 // ── CHARACTERS SECTION ─────────────────────────────────────
+
+// ── CHARACTER PANEL CONFIG (for beautiful headers on each char page) ──────
+const CHAR_PANELS = {
+  moze: {
+    panelClass: 'char-panel-moze', imgClass: 'char-art-moze', img: 'moze.png',
+    eyebrow: 'Gunner — Vladof Ursa Corps',
+    quote: '"Iron Bear is my therapist."',
+    lore: 'Former Vladof Ursa Corps soldier. Survived Darzaran Bay thanks to her 15-ton Iron Bear mech. Now dragging that mech across six galaxies, destroying everything in her path and reading paranormal romance novels in her downtime.',
+    as: 'Iron Bear — dual configurable hardpoint mech. Moze pilots it from inside. Equip any two weapons across four hardpoint slots from her skill trees.',
+    stats: { offense: 95, defense: 85, mobility: 55, utility: 70 }
+  },
+  amara: {
+    panelClass: 'char-panel-amara', imgClass: 'char-art-amara', img: 'amara.png',
+    eyebrow: 'Siren — Partali',
+    quote: '"My fists are registered as sacred relics in six star systems."',
+    lore: 'Celebrity martial artist and champion of the people. One of only six Sirens in the universe. She channels elemental energy through her fists. She also has four extra glowing arms that she uses to launch enemies into orbit.',
+    as: 'Phase abilities — Phasecast, Phaseslam, Phasegrasp, or Phaseflare (DLC). Pick one and augment it twice. Each completely changes her playstyle.',
+    stats: { offense: 90, defense: 60, mobility: 80, utility: 95 }
+  },
+  flak: {
+    panelClass: 'char-panel-flak', imgClass: 'char-art-flak', img: 'flak.png',
+    eyebrow: 'Beastmaster — Unknown Factory',
+    quote: '"The hunt is the harvest."',
+    lore: 'A robot of unknown origin who gained sentience and became a wandering Beastmaster. Non-binary. Travels with three loyal pets — Skag, Spiderant, or Jabber. Keeps a meticulous kill count. Born in a factory, raised by the road.',
+    as: 'Fade Away (3 guaranteed crits) / Gamma Burst (radiation pet + Atomic Aroma) / Rakk Attack (multi-charge airstrikes). Pick one + one pet.',
+    stats: { offense: 100, defense: 65, mobility: 70, utility: 75 }
+  },
+  zane: {
+    panelClass: 'char-panel-zane', imgClass: 'char-art-zane', img: 'zane.png',
+    eyebrow: 'Operative — Partali',
+    quote: '"I\'ve done a lot of things I\'m not proud of. Way more things I am proud of though."',
+    lore: 'Retired black ops assassin, brother of Baron Flynt and Captain Flynt. The only Vault Hunter who equips TWO action skills simultaneously — at the cost of his grenade slot. Irish accent. Impeccable gadgets.',
+    as: 'SNTNL Drone + Digi-Clone + Barrier Shield + MNTIS Shoulder Cannon (DLC). Pick any two at once. Loses grenade use.',
+    stats: { offense: 85, defense: 75, mobility: 100, utility: 100 }
+  }
+};
+
+function charPanelHTML(id, char) {
+  const p = CHAR_PANELS[id];
+  if (!p) return '';
+  const statLabels = { offense:'OFFENSE', defense:'DEFENSE', mobility:'MOBILITY', utility:'UTILITY' };
+  const bars = Object.entries(p.stats).map(([k,v]) => `
+    <div class="char-stat-pill">
+      <span class="char-stat-pill-label">${statLabels[k]}</span>
+      <div class="char-stat-pill-bar"><div class="char-stat-pill-fill" style="width:${v}%;background:${char.color}"></div></div>
+    </div>`).join('');
+  const treePills = (char.trees||[]).map((t,i) => `<span style="font-family:var(--font-mono);font-size:10px;border:1px solid ${i===3?'rgba(155,89,182,0.5)':char.color+'44'};color:${i===3?'#9B59B6':char.color};padding:2px 8px">${t.name}</span>`).join('');
+
+  return `<div class="char-panel-full ${p.panelClass}" style="margin-bottom:0;border-bottom:none;box-shadow:none">
+    <div class="char-bg"></div>
+    ${id==='moze'?'<div class="char-starburst"></div>':''}
+    <div class="char-art-container">
+      <img class="char-art-img ${p.imgClass}" src="${p.img}" alt="${char.name}" loading="eager" />
+    </div>
+    <div class="char-info-panel">
+      <div class="char-panel-eyebrow" style="color:${char.color}">${p.eyebrow}</div>
+      <div class="char-panel-name">${char.name}</div>
+      <div class="char-panel-title" style="color:${char.color}">${char.title}</div>
+      <div class="char-panel-quote" style="border-color:${char.color}">${p.quote}</div>
+      <div class="char-panel-lore">${p.lore}</div>
+      <div class="char-panel-stats-row">${bars}</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">${treePills}</div>
+    </div>
+    <div class="char-panel-bottom">
+      <div class="char-bottom-item">
+        <span class="char-bottom-label">Action Skill</span>
+        <span class="char-bottom-value" style="color:${char.color}">${p.as}</span>
+      </div>
+    </div>
+  </div>`;
+}
+
 function buildCharacters() {
   ['moze','amara','flak','zane'].forEach(id => {
     const sec = document.getElementById(`section-${id}`);
@@ -270,15 +340,7 @@ function charPage(char, id) {
   `).join('');
 
   return `
-    <div style="background:linear-gradient(135deg, ${char.color}15 0%, transparent 50%); border-bottom: 3px solid ${char.color}; padding: 48px">
-      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:${char.color};margin-bottom:8px">VAULT HUNTER</div>
-      <div style="font-family:var(--font-head);font-size:80px;letter-spacing:4px;line-height:0.85;color:var(--white);text-shadow:4px 4px 0 #000,-1px -1px 0 #000">
-        ${char.name}
-      </div>
-      <div style="font-family:var(--font-head);font-size:28px;letter-spacing:3px;color:${char.color};text-shadow:2px 2px 0 #000;margin-bottom:12px">${char.title}</div>
-      <div style="font-size:15px;color:var(--text-dim);max-width:600px;line-height:1.7">${char.description}</div>
-      <div style="font-family:var(--font-mono);font-size:11px;color:${char.color};margin-top:12px;border-left:3px solid ${char.color};padding-left:12px">${char.actionSkill}</div>
-    </div>
+    \${charPanelHTML(id, char)}
     <div class="content-body">
 
       <div class="section-title mb-8">Skill Trees Overview</div>
