@@ -8,18 +8,25 @@ function buildSkillTreesSection() {
   if (!sec || sec.innerHTML.trim()) return;
 
   const charIds = ['moze','amara','flak','zane'];
-  const charNames = { moze:'Moze', amara:'Amara', flak:'FL4K', zane:'Zane' };
+  const charNames = { moze:'Moze', amara:'Amara', flak:"FL4K", zane:'Zane' };
+  const charTitles = { moze:'The Gunner', amara:'The Siren', flak:'The Beastmaster', zane:'The Operative' };
   const charColors = { moze:'#E8272A', amara:'#9B59B6', flak:'#52C41A', zane:'#4A9BFF' };
 
   sec.innerHTML = `
     <div class="page-header">
-      <div class="page-header-eyebrow">Designer\'s Cut Included</div>
+      <div class="page-header-eyebrow">Designer\'s Cut Included — All 4 Trees Per Character</div>
       <h1>Skill Trees</h1>
-      <p>All 4 trees per Vault Hunter — every skill, every augment, every capstone. Includes the purple 4th DLC trees from Designer\'s Cut. Click any skill node for full description and M10 context.</p>
+      <p>Every skill, every augment, every capstone. Orange left-border = priority skill. Gold star = capstone. Cyan = DLC 4th tree. Click any node for full description and M10 context.</p>
     </div>
     <div class="content-body">
-      <div style="display:flex;gap:0;border-bottom:3px solid var(--orange);margin-bottom:28px;overflow-x:auto" id="stchar-tabs">
-        ${charIds.map(id=>`<button class="tab-btn${id==='moze'?' active':''}" style="${id==='moze'?'background:'+charColors[id]+';color:#000':''}" onclick="showSTChar('${id}')" id="stctab-${id}">${charNames[id]}</button>`).join('')}
+      <div style="display:flex;gap:0;margin-bottom:0;overflow-x:auto;border:2px solid var(--orange);box-shadow:4px 4px 0 #000" id="stchar-tabs">
+        ${charIds.map(id=>`
+          <button onclick="showSTChar('${id}')" id="stctab-${id}"
+            style="flex:1;padding:14px 8px;font-family:var(--font-head);font-size:22px;letter-spacing:2px;text-transform:uppercase;border:none;border-right:2px solid #000;cursor:pointer;transition:all .15s;background:${id==='moze'?charColors[id]:'var(--bg-card)'};color:${id==='moze'?'#000':'var(--gray)'};position:relative;top:0">
+            <div style="font-size:22px;letter-spacing:2px">${charNames[id]}</div>
+            <div style="font-size:10px;letter-spacing:1px;font-family:var(--font-mono);opacity:.7;margin-top:2px">${charTitles[id]}</div>
+          </button>
+        `).join('')}
       </div>
       ${charIds.map(id=>`<div id="stchar-${id}" style="display:${id==='moze'?'block':'none'}">${renderCharTrees(id)}</div>`).join('')}
     </div>
@@ -102,8 +109,15 @@ function renderCharTrees(charId) {
     `;
   }).join('');
 
+  const colorBg = { moze:'#E8272A', amara:'#9B59B6', flak:'#52C41A', zane:'#4A9BFF' }[charId] || color;
   return `
-    <div style="font-size:13px;color:var(--text-dim);margin-bottom:16px;padding:8px 12px;border-left:3px solid ${color};background:${color}0a">${charData.note}</div>
+    <div style="display:flex;align-items:center;gap:20px;padding:20px 24px;background:${colorBg}12;border-bottom:3px solid ${colorBg};border-top:none;margin-bottom:20px">
+      <div style="font-family:var(--font-head);font-size:56px;letter-spacing:4px;color:${colorBg};text-shadow:3px 3px 0 #000,-1px -1px 0 #000;line-height:1">${charData.name}</div>
+      <div>
+        <div style="font-family:var(--font-head);font-size:22px;letter-spacing:2px;color:var(--text-dim)">${charData.trees.length} Skill Trees — ${charData.trees.filter(t=>!t.dlc).length} Base + ${charData.trees.filter(t=>t.dlc).length} DLC</div>
+        <div style="font-size:12px;color:var(--gray);margin-top:4px;font-family:var(--font-mono)">${charData.note}</div>
+      </div>
+    </div>
     <div class="st-trees-grid">${treesHTML}</div>
     <div class="st-detail-panel" id="${detailPanelId}">
       <div style="font-size:13px;color:var(--text-dim)">Click any skill or action skill to see the full description and Mayhem 10 context.</div>
@@ -114,13 +128,12 @@ function renderCharTrees(charId) {
 window.showSTChar = function(id) {
   const colors = { moze:'#E8272A', amara:'#9B59B6', flak:'#52C41A', zane:'#4A9BFF' };
   ['moze','amara','flak','zane'].forEach(cid => {
-    const panel = document.getElementById(`stchar-${cid}`);
-    const tab = document.getElementById(`stctab-${cid}`);
+    const panel = document.getElementById('stchar-'+cid);
+    const tab = document.getElementById('stctab-'+cid);
     if (panel) panel.style.display = cid === id ? 'block' : 'none';
     if (tab) {
-      tab.classList.toggle('active', cid === id);
-      tab.style.background = cid === id ? colors[cid] : '';
-      tab.style.color = cid === id ? '#000' : '';
+      tab.style.background = cid === id ? colors[cid] : 'var(--bg-card)';
+      tab.style.color = cid === id ? '#000' : 'var(--gray)';
     }
   });
 };
