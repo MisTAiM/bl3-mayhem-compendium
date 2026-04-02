@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildMayhem();
   buildLoadouts();
   buildLiveSection();
+  if (typeof buildDLCSection === "function") buildDLCSection();
   showSection('home');
   animateBars();
 });
@@ -43,6 +44,7 @@ function buildSidebar() {
     { id: 'planets',   label: 'Planet Guide',    group: 'World' },
     { id: 'loadouts',  label: 'Planet Loadouts', group: 'World' },
     { id: 'weapons',   label: 'Weapons Vault',   group: 'Arsenal' },
+    { id: 'dlc', label: 'DLC Content', icon: '&#128279;', group: 'DLC' },
     { id: 'live',       label: 'Live Stats',     group: 'Live' },
   ];
 
