@@ -289,7 +289,7 @@ const SKILL_TREES = {
       {
         id: 'brawl',
         name: 'Brawl',
-        color: '#E8272A',
+        color: '#F5A623',
         focus: 'Melee / Close Range / HP Sustain',
         actionSkills: [
           {
@@ -358,7 +358,7 @@ const SKILL_TREES = {
       {
         id: 'fistoftheelements',
         name: 'Fist of the Elements',
-        color: '#F5A623',
+        color: '#4A9BFF',
         focus: 'Elemental Damage / AoE / Status Effects / Ties That Bind',
         actionSkills: [
           {
@@ -417,7 +417,7 @@ const SKILL_TREES = {
       {
         id: 'mysticalassault',
         name: 'Mystical Assault',
-        color: '#8A6FF0',
+        color: '#9B59B6',
         focus: 'Rush Stacks / Gun Damage / Skill Spam',
         actionSkills: [
           {
@@ -613,7 +613,7 @@ const SKILL_TREES = {
       {
         id: 'stalker',
         name: 'Stalker',
-        color: '#9B59B6',
+        color: '#52C41A',
         focus: 'Fade Away Synergy / Survivability / Pet',
         actionSkills: [
           {
@@ -654,7 +654,7 @@ const SKILL_TREES = {
       {
         id: 'master',
         name: 'Master',
-        color: '#52C41A',
+        color: '#9B59B6',
         focus: 'Pet Damage / Gamma Burst Radiation / Tankiness via Pet',
         actionSkills: [
           {
@@ -744,7 +744,7 @@ const SKILL_TREES = {
       {
         id: 'hitman',
         name: 'Hitman',
-        color: '#F5A623',
+        color: '#4A9BFF',
         focus: 'SNTNL Drone / Kill Skills / Violent Momentum',
         actionSkills: [
           {
@@ -785,7 +785,7 @@ const SKILL_TREES = {
       {
         id: 'doubledagent',
         name: 'Doubled Agent',
-        color: '#9B59B6',
+        color: '#52C41A',
         focus: 'Digi-Clone / Clone Swap / Grenade Delivery',
         actionSkills: [
           {
@@ -826,7 +826,7 @@ const SKILL_TREES = {
       {
         id: 'undercover',
         name: 'Under Cover',
-        color: '#4A9BFF',
+        color: '#F5C026',
         focus: 'Barrier Shield / Survivability / Shield Synergy',
         actionSkills: [
           {
@@ -867,7 +867,7 @@ const SKILL_TREES = {
       {
         id: 'professional',
         name: 'The Professional',
-        color: '#00D4FF',
+        color: '#E8272A',
         dlc: true,
         dlcName: "Designer's Cut (Season Pass 2)",
         focus: 'MNTIS Shoulder Cannon / Critical Hits / Charge Management',
