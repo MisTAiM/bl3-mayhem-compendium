@@ -239,6 +239,10 @@ const DLC_DATA = {
         { char: 'FL4K', tree: 'Trapper', as: 'Gravity Snare', capstone: 'Shared Soul — pet instantly revives FL4K from FFYL. Effectively unkillable solo.', highlight: 'Take This! skill: FL4K\'s Loader Bot gets a copy of FL4K\'s shield. Transformer shield = Loader Bot absorbs shock damage and regenerates shield.' },
         { char: 'Zane', tree: 'The Professional', as: 'MNTIS Shoulder Cannon', capstone: 'Proliferation — extra charges + bonus damage per remaining charge.', highlight: 'Eraser capstone: ALL crit shots pierce through enemies with increasing damage per enemy pierced. Every shot becomes a chain through packed groups.' }
       ],
+      bosses: [
+        { name: 'Heavyweight Harker', location: 'Arms Race — Stormblind Complex', drops: ['Plasma Coil', 'Torrent', 'Tizzy', 'Kickcharger'], tip: 'Sprint directly to Harker from the Arms Race start — fastest route is center-north. Ignore all other enemies. Kill, loot, extract.' },
+        { name: 'Hermes', location: 'Arms Race — mid-map', drops: ['Arms Race world pool'], tip: 'Second major boss. Only worth killing if you are well-armed and time permits before extraction.' }
+      ],
       armsRaceBosses: [
         { name: 'Heavyweight Harker', drops: ['Plasma Coil', 'Torrent', 'Tizzy', 'Kickcharger'], tip: 'Sprint directly to Harker from the start. Skip all other enemies. Use the fastest route for maximum farm efficiency.' },
         { name: 'Hermes', drops: ['Arms Race world pool'], tip: 'Second major boss. Mid-map. Worth killing only if you\'re well-armed and on the way to extraction.' }
