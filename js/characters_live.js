@@ -139,6 +139,17 @@ const STEAMSPY_DATA = {
   lastUpdated: "April 2026"
 };
 
+function playerCard(label, elId, init, color, badge) {
+  const badgeColors = {'LIVE':'var(--green)','ESTIMATED':'var(--yellow)','N/A':'var(--gray)'};
+  return `<div class="card" style="border-color:${color}44;text-align:center">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:var(--gray)">${label}</span>
+      <span style="font-family:var(--font-mono);font-size:8px;border:1px solid ${badgeColors[badge]};color:${badgeColors[badge]};padding:1px 5px">${badge}</span>
+    </div>
+    <div id="${elId}" style="font-family:var(--font-head);font-size:28px;color:${color};text-shadow:2px 2px 0 #000;line-height:1.1;min-height:36px">${init}</div>
+  </div>`;
+}
+
 function buildLiveSection() {
   const sec = document.getElementById('section-live');
   if (!sec || sec.innerHTML.trim()) return;
@@ -190,10 +201,16 @@ function buildLiveSection() {
         </div>
       </div>
 
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;padding:10px 14px;background:var(--bg-card);border:1px solid rgba(74,155,255,0.3)">
-        <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray);letter-spacing:2px">CURRENT PLAYERS (STEAM LIVE)</div>
-        <div id="live-players" style="font-family:var(--font-head);font-size:24px;color:#4A9BFF;text-shadow:2px 2px 0 #000;margin-left:8px">Fetching...</div>
-        <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray);margin-left:auto">Updates every page load via Steam API</div>
+      <div class="section-title mb-8">Live Player Counts</div>
+      <div class="section-desc mb-16">Steam: live via server-side proxy (updates every 30s). All-platform estimate via SteamSpy CCU model. PlayStation and Xbox concurrent player APIs are not publicly accessible.</div>
+      <div class="grid-4 mb-8" id="players-grid">
+        ${playerCard('STEAM (PC)','live-steam','Fetching...','#4A9BFF','LIVE')}
+        ${playerCard('ALL PLATFORMS','live-all','Fetching...','#52C41A','ESTIMATED')}
+        ${playerCard('PLAYSTATION','live-ps','No Public API','#003791','N/A')}
+        ${playerCard('XBOX','live-xbox','No Public API','#107C10','N/A')}
+      </div>
+      <div id="players-note" style="font-family:var(--font-mono);font-size:10px;color:var(--gray);margin-bottom:24px;padding:8px 12px;background:var(--bg-card);border:1px solid rgba(255,255,255,0.06)">
+        Fetching live data...
       </div>
 
       <div class="section-title mb-8">Speedrun World Records</div>
@@ -239,23 +256,65 @@ function apiInfoCard(name, status, endpoint, desc, color, badge) {
 }
 
 async function fetchLivePlayers() {
-  const el = document.getElementById('live-players');
-  if (!el) return;
+  const setEl = (id, val, color) => {
+    const el = document.getElementById(id);
+    if (el) { el.textContent = val; if (color) el.style.color = color; }
+  };
+
   try {
-    const res = await fetch('https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=397540');
+    // Call our Vercel serverless proxy — runs server-side, no CORS
+    const res = await fetch('/api/players');
+    if (!res.ok) throw new Error('Proxy returned ' + res.status);
     const d = await res.json();
-    const count = d?.response?.player_count;
-    if (count != null) {
-      el.textContent = count.toLocaleString();
-      el.title = 'Live from Steam API';
+
+    if (d.steam != null) {
+      setEl('live-steam', d.steam.toLocaleString(), '#4A9BFF');
     } else {
-      el.textContent = 'API error';
-      el.style.color = 'var(--red)';
+      setEl('live-steam', 'Unavailable', 'var(--gray)');
     }
+
+    if (d.allPlatforms != null) {
+      setEl('live-all', '~' + d.allPlatforms.toLocaleString(), '#52C41A');
+    } else {
+      setEl('live-all', 'Unavailable', 'var(--gray)');
+    }
+
+    setEl('live-ps', 'API Private', '#888');
+    setEl('live-xbox', 'API Private', '#888');
+
+    const note = document.getElementById('players-note');
+    if (note) {
+      const updated = new Date(d.ts).toLocaleTimeString();
+      const pct = d.steamPct ? ` · Steam = ~${d.steamPct}% of total` : '';
+      note.innerHTML = `
+        <span style="color:var(--green)">●</span> Steam live · 
+        <span style="color:var(--yellow)">~</span> All-platform estimate from SteamSpy CCU model${pct} · 
+        <span style="color:var(--gray)">✗</span> PlayStation/Xbox: no public concurrent API · 
+        Last updated: ${updated}
+      `;
+    }
+
+    // Auto-refresh every 60 seconds
+    setTimeout(fetchLivePlayers, 60000);
+
   } catch(err) {
-    el.textContent = 'N/A (CORS)';
-    el.style.color = 'var(--gray)';
-    el.title = 'Steam API CORS blocked in browser: ' + err.message;
+    // Fallback: try Steam direct (CORS may work on some browsers/configs)
+    try {
+      const res2 = await fetch('https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=397540');
+      const d2 = await res2.json();
+      if (d2?.response?.player_count) {
+        setEl('live-steam', d2.response.player_count.toLocaleString(), '#4A9BFF');
+        setEl('live-all', 'Proxy offline', 'var(--gray)');
+      }
+    } catch {
+      setEl('live-steam', 'Proxy offline', 'var(--red)');
+      setEl('live-all', 'Proxy offline', 'var(--red)');
+    }
+    setEl('live-ps', 'API Private', '#888');
+    setEl('live-xbox', 'API Private', '#888');
+    const note = document.getElementById('players-note');
+    if (note) note.textContent = 'Error: ' + err.message + ' — retrying in 60s';
+    setTimeout(fetchLivePlayers, 60000);
   }
 }
 
