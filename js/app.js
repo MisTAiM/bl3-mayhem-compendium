@@ -79,7 +79,10 @@ function buildHome() {
   const sec = document.getElementById('section-home');
   sec.innerHTML = `
     <div class="hero">
-      <div class="hero-content">
+      <div class="hero-fade"></div>
+      <div class="hero-claptrap-glow"></div>
+      <img class="hero-claptrap" src="claptrap.png" alt="Claptrap" />
+      <div class="hero-content" style="position:relative;z-index:3">
         <div class="hero-eyebrow">Ultimate M10 Reference Guide</div>
         <div class="hero-title">BORDERLANDS <span>3</span></div>
         <div class="hero-subtitle">Mayhem 10 Compendium — The Complete Vault Hunter Bible</div>
