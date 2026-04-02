@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildWeapons();
   buildMayhem();
   buildLoadouts();
+  buildSkillTreesSection();
   showSection('home');
   animateBars();
 });
@@ -42,6 +43,7 @@ function buildSidebar() {
     { id: 'planets',   label: 'Planet Guide',    group: 'World' },
     { id: 'loadouts',  label: 'Planet Loadouts', group: 'World' },
     { id: 'weapons',   label: 'Weapons Vault',   group: 'Arsenal' },
+    { id: 'skilltrees', label: 'Skill Trees',    group: 'Arsenal' },
   ];
 
   let currentGroup = '';
