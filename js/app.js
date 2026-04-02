@@ -350,7 +350,7 @@ function charPage(char, id) {
   `).join('');
 
   return `
-    \${charPanelHTML(id, char)}
+    ${charPanelHTML(id, char)}
     <div class="content-body">
 
       <div class="section-title mb-8">Skill Trees Overview</div>
