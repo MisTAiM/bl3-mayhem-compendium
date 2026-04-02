@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   buildWeapons();
   buildMayhem();
   buildLoadouts();
-  buildSkillTreesSection();
   buildLiveSection();
   showSection('home');
   animateBars();
@@ -44,7 +43,6 @@ function buildSidebar() {
     { id: 'planets',   label: 'Planet Guide',    group: 'World' },
     { id: 'loadouts',  label: 'Planet Loadouts', group: 'World' },
     { id: 'weapons',   label: 'Weapons Vault',   group: 'Arsenal' },
-    { id: 'skilltrees', label: 'Skill Trees',    group: 'Arsenal' },
     { id: 'live',       label: 'Live Stats',     group: 'Live' },
   ];
 
@@ -334,7 +332,6 @@ function buildCharacters() {
 
 function charPage(char, id) {
   const builds = char.builds.map((b, bi) => buildCard(b, char.color, id, bi)).join('');
-  const skillTrees = skillTreeHTML(char, id);
   const classMods = (BL3.classMods[id] || []).map(cm => `
     <div class="card mb-16">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
@@ -353,9 +350,9 @@ function charPage(char, id) {
     ${charPanelHTML(id, char)}
     <div class="content-body">
 
-      <div class="section-title mb-8">Skill Trees Overview</div>
-      <div class="section-desc">Four trees — key skill nodes and capstones. Orange = priority spec points. Gold = capstone.</div>
-      ${skillTrees}
+      <div class="section-title mb-8">Skill Trees</div>
+      <div class="section-desc">All 4 trees — every skill, every augment, every capstone. Click any node for full description and M10 context.</div>
+      ${renderCharTrees(id, true)}
       <div class="divider-strong"></div>
 
       <div class="section-title mb-8">Builds</div>
